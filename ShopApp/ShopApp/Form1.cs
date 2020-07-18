@@ -14,6 +14,7 @@ namespace ShopApp
     public partial class shop : Form
     {
         private DBSQL dataB;
+        private int id_item;
 
         public shop()
         {
@@ -284,8 +285,8 @@ namespace ShopApp
                     Item item = new Item();
                     
                     item.GetSetItem = txtBox_Items_AddName.Text;
-                    item.GetSetPrice = float.Parse(txtBox_Items_AddPrice.Text);
-                    item.GetSetSupplier = int.Parse(comboBox_Items_AddSuppliers.Text);
+                    item.GetSetPrice = int.Parse(txtBox_Items_AddPrice.Text);
+                    item.GetSetSupplier = comboBox_Items_AddSuppliers.Text;
                     dataB.InsertItem(item);
                     MessageBox.Show("DataBase added");
                     ShowItemsDgv();
@@ -315,8 +316,8 @@ namespace ShopApp
                     Item item = new Item();
 
                     item.GetSetItem = txtBox_Items_AddName.Text;
-                    item.GetSetPrice = float.Parse(txtBox_Items_AddPrice.Text);
-                    item.GetSetSupplier = int.Parse(comboBox_Items_AddSuppliers.Text);
+                    item.GetSetPrice = int.Parse(txtBox_Items_AddPrice.Text);
+                    item.GetSetSupplier = comboBox_Items_AddSuppliers.Text;
                     dataB.InsertItem(item);
                     MessageBox.Show("DataBase added");
                     ShowItemsDgv();
@@ -326,6 +327,61 @@ namespace ShopApp
             else
             {
                 MessageBox.Show("Need to fill in all fields");
+            }
+        }
+
+        private void btn_items_search_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtBox_items_search.Text;
+            dgv_Items.ClearSelection();
+            dgv_Items.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in dgv_Items.Rows)
+                {
+                    if (row.Cells[1].Value.ToString().Equals(searchValue))//search the same name of item and pull all information into textBox
+                    {
+                        row.Selected = true;
+                        id_item = int.Parse(row.Cells[0].Value.ToString());
+                        txtBox_Items_ChangeName.Text = row.Cells[1].Value.ToString();
+                        txtBox_Items_ChangePrice.Text = row.Cells[2].Value.ToString();
+                        comboBox_Items_ChangeSuppliers.Text = row.Cells[3].Value.ToString();
+                        break;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void btn_items_changeSave_Click(object sender, EventArgs e)
+        {
+            if (txtBox_Items_ChangeName.Text != "" && txtBox_Items_ChangePrice.Text != "")                
+            {
+                Item item = new Item();
+                item.GetSetId = id_item;
+                item.GetSetItem = txtBox_Items_ChangeName.Text;
+                item.GetSetPrice = int.Parse(txtBox_Items_ChangePrice.Text);
+                item.GetSetSupplier = comboBox_Items_ChangeSuppliers.Text;
+                dataB.UpdateItem(item);
+                ShowItemsDgv();
+                MessageBox.Show("DataBase changed:\nName: " + item.GetSetItem.ToString() + "\nPriice: " + item.GetSetPrice.ToString()
+                    + "\nSupplier: " + item.GetSetSupplier.ToString() + "\n");
+            }
+            else
+            {
+                MessageBox.Show("Need to fill in all fields");
+            }
+        }
+
+        private void btn_items_delete_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in this.dgv_Items.SelectedRows)
+            {
+                dgv_Items.Rows.RemoveAt(item.Index);
+                dataB.DeleteRowItems(int.Parse(item.Cells[0].Value.ToString()));
             }
         }
     }

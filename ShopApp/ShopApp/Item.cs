@@ -10,8 +10,8 @@ namespace ShopApp
     {
         private int id_item;
         private string item;
-        private float price;
-        private int id_supplier;
+        private int price;
+        private string nameOfCompany;
 
         public Item()
         {
@@ -31,20 +31,20 @@ namespace ShopApp
             }
         }
 
-        public int GetSetSupplier
+        public string GetSetSupplier
         {
             get
             {
-                return this.id_supplier;
+                return this.nameOfCompany;
             }
             set
             {
-                if (value > 0)
-                    this.id_supplier = value;
+                if (!String.IsNullOrEmpty(value))
+                    this.nameOfCompany = value;
             }
         }
 
-        public float GetSetPrice
+        public int GetSetPrice
         {
             get
             {

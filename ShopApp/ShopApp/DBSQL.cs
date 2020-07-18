@@ -76,18 +76,18 @@ namespace ShopApp
         //Insert subject Item in db
         public void InsertItem (Item item)
         {
-            string cmdStr = "INSERT INTO Items (Id_item, Item, Price, Id_supplier)VALUES(@id_item, @Item, @Price, @id_suppliers)";
+            string cmdStr = "INSERT INTO Items (Item, Price, NameOfCompany)VALUES(@Item, @Price, @NameOfCompany)";
             ArrayList items = new ArrayList(GetSuppliersData());
             using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
-                if (item.GetSetId == -1)
-                { command.Parameters.AddWithValue("@id_item", GetItemsNumberMax() + 1); }
-                else
-                { command.Parameters.AddWithValue("@id_item", item.GetSetId == -1); }
+                //if (item.GetSetId == -1)
+                //{ command.Parameters.AddWithValue("@id_item", GetItemsNumberMax() + 1); }
+                //else
+                //{ command.Parameters.AddWithValue("@id_item", item.GetSetId == -1); }
 
                 command.Parameters.AddWithValue("@Item", item.GetSetItem);
                 command.Parameters.AddWithValue("@Price", item.GetSetPrice);
-                command.Parameters.AddWithValue("@id_supplier", item.GetSetSupplier);
+                command.Parameters.AddWithValue("@NameOfCompany", item.GetSetSupplier);
                 base.ExecuteSimpleQuery(command);
             }
         }
@@ -224,8 +224,8 @@ namespace ShopApp
             {
                 Item item = new Item();
                 item.GetSetItem = tType[1].ToString();
-                item.GetSetPrice = float.Parse(tType[2].ToString());
-                item.GetSetSupplier = int.Parse(tType[3].ToString());
+                item.GetSetPrice = int.Parse(tType[2].ToString());
+                item.GetSetSupplier = tType[3].ToString();
                 item.GetSetId = int.Parse(tType[0].ToString());
                 items.Add(item);
             }
@@ -258,7 +258,7 @@ namespace ShopApp
         //Delete row in Items in db
         public void DeleteRowItems(int id)
         {
-            string cmdStr = "DELETE FROM Items WHERE Id_item =@id_item ";
+            string cmdStr = "DELETE FROM Items WHERE Id_item =@id_item";
             using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
                 command.Parameters.AddWithValue("@id_item", id);
@@ -295,12 +295,12 @@ namespace ShopApp
         // Item table update
         public void UpdateItem(Item item)
         {
-            string cmdStr = "UPDATE Items SET Item = ?, Price = ?,  Id_supplier = ? WHERE Id_item = ?";
+            string cmdStr = "UPDATE Items SET Item = ?, Price = ?,  NameOfCompany = ? WHERE Id_item = ?";
             using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
                 command.Parameters.AddWithValue("Item", item.GetSetItem);
                 command.Parameters.AddWithValue("Price", item.GetSetPrice);
-                command.Parameters.AddWithValue("Id_supplier", item.GetSetSupplier);
+                command.Parameters.AddWithValue("NameOfCompany", item.GetSetSupplier);
                 command.Parameters.AddWithValue("Id_item", item.GetSetId);
                 base.ExecuteSimpleQuery(command);
             }

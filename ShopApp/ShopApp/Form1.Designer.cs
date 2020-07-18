@@ -37,11 +37,11 @@ namespace ShopApp
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label26 = new System.Windows.Forms.Label();
             this.comboBox_Items_ChangeSuppliers = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btn_items_search = new System.Windows.Forms.Button();
+            this.txtBox_items_search = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_items_delete = new System.Windows.Forms.Button();
+            this.btn_items_changeSave = new System.Windows.Forms.Button();
             this.txtBox_Items_ChangePrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtBox_Items_ChangeName = new System.Windows.Forms.TextBox();
@@ -177,11 +177,11 @@ namespace ShopApp
             // 
             this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.comboBox_Items_ChangeSuppliers);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.btn_items_search);
+            this.tabPage1.Controls.Add(this.txtBox_items_search);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.btn_items_delete);
+            this.tabPage1.Controls.Add(this.btn_items_changeSave);
             this.tabPage1.Controls.Add(this.txtBox_Items_ChangePrice);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.txtBox_Items_ChangeName);
@@ -214,24 +214,25 @@ namespace ShopApp
             this.comboBox_Items_ChangeSuppliers.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Items_ChangeSuppliers.TabIndex = 25;
             // 
-            // button1
+            // btn_items_search
             // 
-            this.button1.Location = new System.Drawing.Point(27, 148);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 55);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_items_search.Location = new System.Drawing.Point(27, 148);
+            this.btn_items_search.Name = "btn_items_search";
+            this.btn_items_search.Size = new System.Drawing.Size(121, 55);
+            this.btn_items_search.TabIndex = 24;
+            this.btn_items_search.Text = "Search";
+            this.btn_items_search.UseVisualStyleBackColor = true;
+            this.btn_items_search.Click += new System.EventHandler(this.btn_items_search_Click);
             // 
-            // textBox1
+            // txtBox_items_search
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtBox_items_search.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(27, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 23;
+            this.txtBox_items_search.Location = new System.Drawing.Point(27, 83);
+            this.txtBox_items_search.Name = "txtBox_items_search";
+            this.txtBox_items_search.Size = new System.Drawing.Size(121, 20);
+            this.txtBox_items_search.TabIndex = 23;
             // 
             // label3
             // 
@@ -245,26 +246,28 @@ namespace ShopApp
             this.label3.TabIndex = 22;
             this.label3.Text = "Name";
             // 
-            // button2
+            // btn_items_delete
             // 
-            this.button2.Location = new System.Drawing.Point(381, 148);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(123, 55);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_items_delete.Location = new System.Drawing.Point(381, 148);
+            this.btn_items_delete.Name = "btn_items_delete";
+            this.btn_items_delete.Size = new System.Drawing.Size(123, 55);
+            this.btn_items_delete.TabIndex = 15;
+            this.btn_items_delete.Text = "Delete";
+            this.btn_items_delete.UseVisualStyleBackColor = true;
+            this.btn_items_delete.Click += new System.EventHandler(this.btn_items_delete_Click);
             // 
-            // button3
+            // btn_items_changeSave
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_items_changeSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(206, 148);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(121, 55);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Save";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_items_changeSave.Location = new System.Drawing.Point(206, 148);
+            this.btn_items_changeSave.Name = "btn_items_changeSave";
+            this.btn_items_changeSave.Size = new System.Drawing.Size(121, 55);
+            this.btn_items_changeSave.TabIndex = 14;
+            this.btn_items_changeSave.Text = "Save";
+            this.btn_items_changeSave.UseVisualStyleBackColor = true;
+            this.btn_items_changeSave.Click += new System.EventHandler(this.btn_items_changeSave_Click);
             // 
             // txtBox_Items_ChangePrice
             // 
@@ -1271,11 +1274,11 @@ namespace ShopApp
         private TabPage tabPage1;
         private Label label26;
         private ComboBox comboBox_Items_ChangeSuppliers;
-        private Button button1;
-        private TextBox textBox1;
+        private Button btn_items_search;
+        private TextBox txtBox_items_search;
         private Label label3;
-        private Button button2;
-        private Button button3;
+        private Button btn_items_delete;
+        private Button btn_items_changeSave;
         private TextBox txtBox_Items_ChangePrice;
         private Label label4;
         private TextBox txtBox_Items_ChangeName;
