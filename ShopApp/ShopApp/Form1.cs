@@ -79,7 +79,7 @@ namespace ShopApp
         //
         private void btn_Clients_SaveChange_Click(object sender, EventArgs e)
         {
-            if (textBox_Client_NameAdd.Text != "" && textBox_Clients_AddressAdd.Text != ""
+            if (textBox_Clients_NameChange.Text != "" && textBox_Clients_AdressChange.Text != ""
                 && textBox_Cliients_TelephoneAdd.Text != "")
             {
                 Client person = new Client();
@@ -149,20 +149,22 @@ namespace ShopApp
         {
             int numOfStu = dataB.GetItemsNumber();//number of Rows
 
-            dgv_Items.ColumnCount = 3;//number of Columns
+            dgv_Items.ColumnCount = 4;//number of Columns
             dgv_Items.RowCount = numOfStu;//number of Rows
 
-            dgv_Items.Columns[0].HeaderText = "Name";
-            dgv_Items.Columns[1].HeaderText = "Price";
-            dgv_Items.Columns[2].HeaderText = "Suppliers";
+            dgv_Items.Columns[0].HeaderText = "№";
+            dgv_Items.Columns[1].HeaderText = "Name";
+            dgv_Items.Columns[2].HeaderText = "Price";
+            dgv_Items.Columns[3].HeaderText = "Suppliers";
 
 
             Item[] items = dataB.GetItemsData();//array of suppliers from db
             for (int i = 0; i < numOfStu; i++)//set data in cells
             {
-                dgv_Items[0, i].Value = items[i].GetSetItem;
-                dgv_Items[1, i].Value = items[i].GetSetPrice;
-                dgv_Items[2, i].Value = items[i].GetSetSupplier;
+                dgv_Items[0, i].Value = items[i].GetSetId;
+                dgv_Items[1, i].Value = items[i].GetSetItem;
+                dgv_Items[2, i].Value = items[i].GetSetPrice;
+                dgv_Items[3, i].Value = items[i].GetSetSupplier;
             }
         }
 
@@ -229,7 +231,9 @@ namespace ShopApp
             {
                 dgvSuppliers.Rows.RemoveAt(item.Index);
                 dataB.DeleteRowSuppliers(item.Cells[0].Value.ToString());
+                dataB.DeleteRowItems(item.Cells[0].Value.ToString());
             }
+            ShowItemsDgv();
             fillSuppliers();
         }
 

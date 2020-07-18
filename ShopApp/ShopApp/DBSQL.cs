@@ -266,6 +266,16 @@ namespace ShopApp
             }
         }
 
+        public void DeleteRowItems(string name)
+        {
+            string cmdStr = "DELETE FROM Items WHERE NameOfCompany =@NameOfCompany";
+            using (OleDbCommand command = new OleDbCommand(cmdStr))
+            {
+                command.Parameters.AddWithValue("@NameOfCompany", name);
+                base.ExecuteSimpleQuery(command);
+            }
+        }
+
         // customer table update
         public void UpdateClient(Client p)
         {
