@@ -224,7 +224,7 @@ namespace ShopApp
             {
                 Item item = new Item();
                 item.GetSetItem = tType[1].ToString();
-                item.GetSetPrice = int.Parse(tType[2].ToString());
+                item.GetSetPrice = float.Parse(tType[2].ToString());
                 item.GetSetSupplier = tType[3].ToString();
                 item.GetSetId = int.Parse(tType[0].ToString());
                 items.Add(item);

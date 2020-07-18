@@ -10,7 +10,7 @@ namespace ShopApp
     {
         private int id_item;
         private string item;
-        private int price;
+        private float price;
         private string nameOfCompany;
 
         public Item()
@@ -44,7 +44,7 @@ namespace ShopApp
             }
         }
 
-        public int GetSetPrice
+        public float GetSetPrice
         {
             get
             {

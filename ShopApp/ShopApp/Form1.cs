@@ -149,22 +149,20 @@ namespace ShopApp
         {
             int numOfStu = dataB.GetItemsNumber();//number of Rows
 
-            dgv_Items.ColumnCount = 4;//number of Columns
+            dgv_Items.ColumnCount = 3;//number of Columns
             dgv_Items.RowCount = numOfStu;//number of Rows
 
-            dgv_Items.Columns[0].HeaderText = "id";//Titles
-            dgv_Items.Columns[1].HeaderText = "Name";
-            dgv_Items.Columns[2].HeaderText = "Telephone";
-            dgv_Items.Columns[3].HeaderText = "Suppliers";
+            dgv_Items.Columns[0].HeaderText = "Name";
+            dgv_Items.Columns[1].HeaderText = "Price";
+            dgv_Items.Columns[2].HeaderText = "Suppliers";
 
 
             Item[] items = dataB.GetItemsData();//array of suppliers from db
             for (int i = 0; i < numOfStu; i++)//set data in cells
             {
-                dgv_Items[0, i].Value = items[i].GetSetId;
-                dgv_Items[1, i].Value = items[i].GetSetItem;
-                dgv_Items[2, i].Value = items[i].GetSetPrice;
-                dgv_Items[3, i].Value = items[i].GetSetSupplier;
+                dgv_Items[0, i].Value = items[i].GetSetItem;
+                dgv_Items[1, i].Value = items[i].GetSetPrice;
+                dgv_Items[2, i].Value = items[i].GetSetSupplier;
             }
         }
 
@@ -222,6 +220,7 @@ namespace ShopApp
             {
                 MessageBox.Show("Need to fill in all fields");
             }
+            fillSuppliers();
         }
 
         private void btn_SuppliersDelete_Click(object sender, EventArgs e)
@@ -231,6 +230,7 @@ namespace ShopApp
                 dgvSuppliers.Rows.RemoveAt(item.Index);
                 dataB.DeleteRowSuppliers(item.Cells[0].Value.ToString());
             }
+            fillSuppliers();
         }
 
 
@@ -250,6 +250,7 @@ namespace ShopApp
             {
                 MessageBox.Show("Need to fill in all fields");
             }
+            fillSuppliers();
         }
 
 
@@ -285,7 +286,7 @@ namespace ShopApp
                     Item item = new Item();
                     
                     item.GetSetItem = txtBox_Items_AddName.Text;
-                    item.GetSetPrice = int.Parse(txtBox_Items_AddPrice.Text);
+                    item.GetSetPrice = float.Parse(txtBox_Items_AddPrice.Text);
                     item.GetSetSupplier = comboBox_Items_AddSuppliers.Text;
                     dataB.InsertItem(item);
                     MessageBox.Show("DataBase added");
@@ -303,8 +304,12 @@ namespace ShopApp
         {
             Suppliers[] firms = dataB.GetSuppliersData();
             comboBox_Items_AddSuppliers.Items.Clear();
+            comboBox_Items_ChangeSuppliers.Items.Clear();
             for (int i = 0; i < firms.Length; i++)
+            {
                 comboBox_Items_AddSuppliers.Items.Add(firms[i].GetSetNameCompany);
+                comboBox_Items_ChangeSuppliers.Items.Add(firms[i].GetSetNameCompany);
+            }
         }
 
         private void btn_Items_AddSave_Click_1(object sender, EventArgs e)
@@ -316,7 +321,7 @@ namespace ShopApp
                     Item item = new Item();
 
                     item.GetSetItem = txtBox_Items_AddName.Text;
-                    item.GetSetPrice = int.Parse(txtBox_Items_AddPrice.Text);
+                    item.GetSetPrice = float.Parse(txtBox_Items_AddPrice.Text);
                     item.GetSetSupplier = comboBox_Items_AddSuppliers.Text;
                     dataB.InsertItem(item);
                     MessageBox.Show("DataBase added");
@@ -363,7 +368,7 @@ namespace ShopApp
                 Item item = new Item();
                 item.GetSetId = id_item;
                 item.GetSetItem = txtBox_Items_ChangeName.Text;
-                item.GetSetPrice = int.Parse(txtBox_Items_ChangePrice.Text);
+                item.GetSetPrice = float.Parse(txtBox_Items_ChangePrice.Text);
                 item.GetSetSupplier = comboBox_Items_ChangeSuppliers.Text;
                 dataB.UpdateItem(item);
                 ShowItemsDgv();
@@ -381,7 +386,7 @@ namespace ShopApp
             foreach (DataGridViewRow item in this.dgv_Items.SelectedRows)
             {
                 dgv_Items.Rows.RemoveAt(item.Index);
-                dataB.DeleteRowItems(int.Parse(item.Cells[0].Value.ToString()));
+                dataB.DeleteRowItems(int.Parse(item.Cells[0].Value.ToString()));                
             }
         }
     }

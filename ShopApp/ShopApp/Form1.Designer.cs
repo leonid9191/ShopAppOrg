@@ -34,7 +34,7 @@ namespace ShopApp
             this.tabDataBase = new System.Windows.Forms.TabControl();
             this.addStudent = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage_Items_Change = new System.Windows.Forms.TabPage();
             this.label26 = new System.Windows.Forms.Label();
             this.comboBox_Items_ChangeSuppliers = new System.Windows.Forms.ComboBox();
             this.btn_items_search = new System.Windows.Forms.Button();
@@ -119,7 +119,7 @@ namespace ShopApp
             this.tabDataBase.SuspendLayout();
             this.addStudent.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPage_Items_Change.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Items)).BeginInit();
             this.Clients.SuspendLayout();
@@ -165,7 +165,7 @@ namespace ShopApp
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage_Items_Change);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(4, 310);
             this.tabControl1.Name = "tabControl1";
@@ -173,26 +173,26 @@ namespace ShopApp
             this.tabControl1.Size = new System.Drawing.Size(540, 245);
             this.tabControl1.TabIndex = 6;
             // 
-            // tabPage1
+            // tabPage_Items_Change
             // 
-            this.tabPage1.Controls.Add(this.label26);
-            this.tabPage1.Controls.Add(this.comboBox_Items_ChangeSuppliers);
-            this.tabPage1.Controls.Add(this.btn_items_search);
-            this.tabPage1.Controls.Add(this.txtBox_items_search);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.btn_items_delete);
-            this.tabPage1.Controls.Add(this.btn_items_changeSave);
-            this.tabPage1.Controls.Add(this.txtBox_Items_ChangePrice);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.txtBox_Items_ChangeName);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(532, 219);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Change";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage_Items_Change.Controls.Add(this.label26);
+            this.tabPage_Items_Change.Controls.Add(this.comboBox_Items_ChangeSuppliers);
+            this.tabPage_Items_Change.Controls.Add(this.btn_items_search);
+            this.tabPage_Items_Change.Controls.Add(this.txtBox_items_search);
+            this.tabPage_Items_Change.Controls.Add(this.label3);
+            this.tabPage_Items_Change.Controls.Add(this.btn_items_delete);
+            this.tabPage_Items_Change.Controls.Add(this.btn_items_changeSave);
+            this.tabPage_Items_Change.Controls.Add(this.txtBox_Items_ChangePrice);
+            this.tabPage_Items_Change.Controls.Add(this.label4);
+            this.tabPage_Items_Change.Controls.Add(this.txtBox_Items_ChangeName);
+            this.tabPage_Items_Change.Controls.Add(this.label5);
+            this.tabPage_Items_Change.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_Items_Change.Name = "tabPage_Items_Change";
+            this.tabPage_Items_Change.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_Items_Change.Size = new System.Drawing.Size(532, 219);
+            this.tabPage_Items_Change.TabIndex = 0;
+            this.tabPage_Items_Change.Text = "Change";
+            this.tabPage_Items_Change.UseVisualStyleBackColor = true;
             // 
             // label26
             // 
@@ -1148,8 +1148,8 @@ namespace ShopApp
             this.tabDataBase.ResumeLayout(false);
             this.addStudent.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabPage_Items_Change.ResumeLayout(false);
+            this.tabPage_Items_Change.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Items)).EndInit();
@@ -1271,7 +1271,7 @@ namespace ShopApp
         private TextBox txtBox_Suppliers_search;
         private Label label2;
         private TabControl tabControl1;
-        private TabPage tabPage1;
+        private TabPage tabPage_Items_Change;
         private Label label26;
         private ComboBox comboBox_Items_ChangeSuppliers;
         private Button btn_items_search;
