@@ -33,6 +33,7 @@ namespace ShopApp
         {
             this.tabDataBase = new System.Windows.Forms.TabControl();
             this.addStudent = new System.Windows.Forms.TabPage();
+            this.btn_Items_addToCart = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Items_Change = new System.Windows.Forms.TabPage();
             this.label26 = new System.Windows.Forms.Label();
@@ -56,6 +57,7 @@ namespace ShopApp
             this.label16 = new System.Windows.Forms.Label();
             this.dgv_Items = new System.Windows.Forms.DataGridView();
             this.Clients = new System.Windows.Forms.TabPage();
+            this.btn_Clients_order = new System.Windows.Forms.Button();
             this.Clients_tab = new System.Windows.Forms.TabControl();
             this.Client_Change = new System.Windows.Forms.TabPage();
             this.btn_ClientsDelete = new System.Windows.Forms.Button();
@@ -98,24 +100,12 @@ namespace ShopApp
             this.label18 = new System.Windows.Forms.Label();
             this.dgvSuppliers = new System.Windows.Forms.DataGridView();
             this.Orders = new System.Windows.Forms.TabPage();
+            this.dgv_Orders_All = new System.Windows.Forms.DataGridView();
             this.Order_tab = new System.Windows.Forms.TabControl();
-            this.Order_Change = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.Order_Add = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.dgv_Orders = new System.Windows.Forms.DataGridView();
+            this.btn_Orders_Add_Delete = new System.Windows.Forms.Button();
+            this.dgv_orders_addNewOrder = new System.Windows.Forms.DataGridView();
+            this.btn_Orders__Add_Save = new System.Windows.Forms.Button();
             this.tabDataBase.SuspendLayout();
             this.addStudent.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -133,10 +123,10 @@ namespace ShopApp
             this.Suppliers_Add.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
             this.Orders.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders_All)).BeginInit();
             this.Order_tab.SuspendLayout();
-            this.Order_Change.SuspendLayout();
             this.Order_Add.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_orders_addNewOrder)).BeginInit();
             this.SuspendLayout();
             // 
             // tabDataBase
@@ -153,6 +143,7 @@ namespace ShopApp
             // 
             // addStudent
             // 
+            this.addStudent.Controls.Add(this.btn_Items_addToCart);
             this.addStudent.Controls.Add(this.tabControl1);
             this.addStudent.Controls.Add(this.dgv_Items);
             this.addStudent.Location = new System.Drawing.Point(4, 22);
@@ -162,6 +153,16 @@ namespace ShopApp
             this.addStudent.TabIndex = 0;
             this.addStudent.Text = "Items";
             this.addStudent.UseVisualStyleBackColor = true;
+            // 
+            // btn_Items_addToCart
+            // 
+            this.btn_Items_addToCart.Location = new System.Drawing.Point(452, 0);
+            this.btn_Items_addToCart.Name = "btn_Items_addToCart";
+            this.btn_Items_addToCart.Size = new System.Drawing.Size(100, 306);
+            this.btn_Items_addToCart.TabIndex = 7;
+            this.btn_Items_addToCart.Text = "Add to cart";
+            this.btn_Items_addToCart.UseVisualStyleBackColor = true;
+            this.btn_Items_addToCart.Click += new System.EventHandler(this.btn_Items_addToCart_Click);
             // 
             // tabControl1
             // 
@@ -420,6 +421,7 @@ namespace ShopApp
             // 
             // Clients
             // 
+            this.Clients.Controls.Add(this.btn_Clients_order);
             this.Clients.Controls.Add(this.Clients_tab);
             this.Clients.Controls.Add(this.dgvClients);
             this.Clients.Location = new System.Drawing.Point(4, 22);
@@ -429,6 +431,16 @@ namespace ShopApp
             this.Clients.TabIndex = 1;
             this.Clients.Text = "Clients";
             this.Clients.UseVisualStyleBackColor = true;
+            // 
+            // btn_Clients_order
+            // 
+            this.btn_Clients_order.Location = new System.Drawing.Point(456, 0);
+            this.btn_Clients_order.Name = "btn_Clients_order";
+            this.btn_Clients_order.Size = new System.Drawing.Size(101, 306);
+            this.btn_Clients_order.TabIndex = 5;
+            this.btn_Clients_order.Text = "Buyer for order";
+            this.btn_Clients_order.UseVisualStyleBackColor = true;
+            this.btn_Clients_order.Click += new System.EventHandler(this.btn_Clients_order_Click);
             // 
             // Clients_tab
             // 
@@ -916,8 +928,8 @@ namespace ShopApp
             // 
             // Orders
             // 
+            this.Orders.Controls.Add(this.dgv_Orders_All);
             this.Orders.Controls.Add(this.Order_tab);
-            this.Orders.Controls.Add(this.dgv_Orders);
             this.Orders.Location = new System.Drawing.Point(4, 22);
             this.Orders.Name = "Orders";
             this.Orders.Padding = new System.Windows.Forms.Padding(3);
@@ -926,215 +938,69 @@ namespace ShopApp
             this.Orders.Text = "Orders";
             this.Orders.UseVisualStyleBackColor = true;
             // 
+            // dgv_Orders_All
+            // 
+            this.dgv_Orders_All.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Orders_All.Location = new System.Drawing.Point(-4, 0);
+            this.dgv_Orders_All.Name = "dgv_Orders_All";
+            this.dgv_Orders_All.Size = new System.Drawing.Size(560, 228);
+            this.dgv_Orders_All.TabIndex = 2;
+            // 
             // Order_tab
             // 
-            this.Order_tab.Controls.Add(this.Order_Change);
             this.Order_tab.Controls.Add(this.Order_Add);
-            this.Order_tab.Location = new System.Drawing.Point(3, 312);
+            this.Order_tab.Location = new System.Drawing.Point(3, 234);
             this.Order_tab.Name = "Order_tab";
             this.Order_tab.SelectedIndex = 0;
-            this.Order_tab.Size = new System.Drawing.Size(540, 245);
+            this.Order_tab.Size = new System.Drawing.Size(540, 323);
             this.Order_tab.TabIndex = 3;
-            // 
-            // Order_Change
-            // 
-            this.Order_Change.Controls.Add(this.button5);
-            this.Order_Change.Controls.Add(this.comboBox5);
-            this.Order_Change.Controls.Add(this.label19);
-            this.Order_Change.Controls.Add(this.textBox9);
-            this.Order_Change.Controls.Add(this.label20);
-            this.Order_Change.Controls.Add(this.textBox10);
-            this.Order_Change.Controls.Add(this.label21);
-            this.Order_Change.Location = new System.Drawing.Point(4, 22);
-            this.Order_Change.Name = "Order_Change";
-            this.Order_Change.Padding = new System.Windows.Forms.Padding(3);
-            this.Order_Change.Size = new System.Drawing.Size(532, 219);
-            this.Order_Change.TabIndex = 0;
-            this.Order_Change.Text = "Change";
-            this.Order_Change.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(206, 180);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(121, 23);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Save";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(206, 135);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 13;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(209, 118);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(45, 13);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "Supplier";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.Location = new System.Drawing.Point(206, 83);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(121, 20);
-            this.textBox9.TabIndex = 11;
-            // 
-            // label20
-            // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(209, 66);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(31, 13);
-            this.label20.TabIndex = 10;
-            this.label20.Text = "Price";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Location = new System.Drawing.Point(206, 32);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(121, 20);
-            this.textBox10.TabIndex = 9;
-            // 
-            // label21
-            // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(209, 15);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(35, 13);
-            this.label21.TabIndex = 8;
-            this.label21.Text = "Name";
             // 
             // Order_Add
             // 
-            this.Order_Add.Controls.Add(this.button6);
-            this.Order_Add.Controls.Add(this.comboBox6);
-            this.Order_Add.Controls.Add(this.label22);
-            this.Order_Add.Controls.Add(this.textBox11);
-            this.Order_Add.Controls.Add(this.label23);
-            this.Order_Add.Controls.Add(this.textBox12);
-            this.Order_Add.Controls.Add(this.label24);
+            this.Order_Add.Controls.Add(this.btn_Orders_Add_Delete);
+            this.Order_Add.Controls.Add(this.dgv_orders_addNewOrder);
+            this.Order_Add.Controls.Add(this.btn_Orders__Add_Save);
             this.Order_Add.Location = new System.Drawing.Point(4, 22);
             this.Order_Add.Name = "Order_Add";
             this.Order_Add.Padding = new System.Windows.Forms.Padding(3);
-            this.Order_Add.Size = new System.Drawing.Size(532, 219);
+            this.Order_Add.Size = new System.Drawing.Size(532, 297);
             this.Order_Add.TabIndex = 1;
             this.Order_Add.Text = "Add";
             this.Order_Add.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btn_Orders_Add_Delete
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_Orders_Add_Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(206, 180);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(121, 23);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "Save";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btn_Orders_Add_Delete.Location = new System.Drawing.Point(356, 29);
+            this.btn_Orders_Add_Delete.Name = "btn_Orders_Add_Delete";
+            this.btn_Orders_Add_Delete.Size = new System.Drawing.Size(121, 101);
+            this.btn_Orders_Add_Delete.TabIndex = 16;
+            this.btn_Orders_Add_Delete.Text = "Delete";
+            this.btn_Orders_Add_Delete.UseVisualStyleBackColor = true;
             // 
-            // comboBox6
+            // dgv_orders_addNewOrder
             // 
-            this.comboBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgv_orders_addNewOrder.AllowUserToAddRows = false;
+            this.dgv_orders_addNewOrder.AllowUserToDeleteRows = false;
+            this.dgv_orders_addNewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_orders_addNewOrder.Location = new System.Drawing.Point(-1, 0);
+            this.dgv_orders_addNewOrder.Name = "dgv_orders_addNewOrder";
+            this.dgv_orders_addNewOrder.Size = new System.Drawing.Size(307, 294);
+            this.dgv_orders_addNewOrder.TabIndex = 15;
+            // 
+            // btn_Orders__Add_Save
+            // 
+            this.btn_Orders__Add_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(206, 135);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 21);
-            this.comboBox6.TabIndex = 13;
-            // 
-            // label22
-            // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(209, 118);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(45, 13);
-            this.label22.TabIndex = 12;
-            this.label22.Text = "Supplier";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Location = new System.Drawing.Point(206, 83);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(121, 20);
-            this.textBox11.TabIndex = 11;
-            // 
-            // label23
-            // 
-            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(209, 66);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(31, 13);
-            this.label23.TabIndex = 10;
-            this.label23.Text = "Price";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.Location = new System.Drawing.Point(206, 32);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(121, 20);
-            this.textBox12.TabIndex = 9;
-            // 
-            // label24
-            // 
-            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(209, 15);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(35, 13);
-            this.label24.TabIndex = 8;
-            this.label24.Text = "Name";
-            // 
-            // dgv_Orders
-            // 
-            this.dgv_Orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Orders.Location = new System.Drawing.Point(-4, 0);
-            this.dgv_Orders.Name = "dgv_Orders";
-            this.dgv_Orders.Size = new System.Drawing.Size(560, 306);
-            this.dgv_Orders.TabIndex = 2;
+            this.btn_Orders__Add_Save.Location = new System.Drawing.Point(356, 177);
+            this.btn_Orders__Add_Save.Name = "btn_Orders__Add_Save";
+            this.btn_Orders__Add_Save.Size = new System.Drawing.Size(121, 101);
+            this.btn_Orders__Add_Save.TabIndex = 14;
+            this.btn_Orders__Add_Save.Text = "Save";
+            this.btn_Orders__Add_Save.UseVisualStyleBackColor = true;
             // 
             // shop
             // 
@@ -1168,12 +1034,10 @@ namespace ShopApp
             this.Suppliers_Add.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).EndInit();
             this.Orders.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders_All)).EndInit();
             this.Order_tab.ResumeLayout(false);
-            this.Order_Change.ResumeLayout(false);
-            this.Order_Change.PerformLayout();
             this.Order_Add.ResumeLayout(false);
-            this.Order_Add.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_orders_addNewOrder)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1213,16 +1077,13 @@ namespace ShopApp
         private System.Windows.Forms.DataGridView dgvClients;
         private System.Windows.Forms.DataGridView dgvSuppliers;
         private System.Windows.Forms.TabPage Orders;
-        private System.Windows.Forms.DataGridView dgv_Orders;
+        private System.Windows.Forms.DataGridView dgv_Orders_All;
         private System.Windows.Forms.TabControl Clients_tab;
         private System.Windows.Forms.TabPage Client_Change;
         private System.Windows.Forms.TabPage Client_Add;
         private System.Windows.Forms.TabControl Suppliers_tab;
         private System.Windows.Forms.TabPage Suppliers_Change;
         private System.Windows.Forms.TabPage Suppliers_Add;
-        private System.Windows.Forms.TabControl Order_tab;
-        private System.Windows.Forms.TabPage Order_Change;
-        private System.Windows.Forms.TabPage Order_Add;
         private System.Windows.Forms.DataGridView dgv_Items;
         private System.Windows.Forms.Button btn_Clients_SaveChange;
         private System.Windows.Forms.TextBox textBox_Clients_TelephoneChange;
@@ -1242,20 +1103,6 @@ namespace ShopApp
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBox_Suppliers_NameAdd;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox textBox_Clients_IdChange;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox_Clients_IdAdd;
@@ -1291,6 +1138,13 @@ namespace ShopApp
         private Label label6;
         private TextBox txtBox_Items_AddName;
         private Label label16;
+        private Button btn_Clients_order;
+        private Button btn_Items_addToCart;
+        private TabControl Order_tab;
+        private TabPage Order_Add;
+        private Button btn_Orders_Add_Delete;
+        private DataGridView dgv_orders_addNewOrder;
+        private Button btn_Orders__Add_Save;
     }
 
     internal class dbShopDataSetTableAdapters

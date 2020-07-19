@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace ShopApp
     {
         private DBSQL dataB;
         private int id_item;
+        private int id_client;
+        private List<Item> items_list;
 
         public shop()
         {
@@ -24,7 +27,8 @@ namespace ShopApp
     
         private void shop_Load(object sender, EventArgs e)
         {
-        
+
+            items_list = new List<Item>();
             string dbPath = Application.StartupPath + @"\..\..\dbShop(Access).accdb";
             if (File.Exists(dbPath))
             {
@@ -41,7 +45,22 @@ namespace ShopApp
             ShowClientsDgv();
             ShowSuppliersDgv();
             ShowItemsDgv();
+            
             fillSuppliers();
+
+            //Colors for buttons
+            btn_ClientsDelete.BackColor = Color.IndianRed;
+            btn_items_delete.BackColor = Color.IndianRed;
+            btn_SuppliersDelete.BackColor = Color.IndianRed;
+            btn_Clients_SaveChange.BackColor = Color.LightYellow;
+            btn_Client_SaveAdd.BackColor = Color.LightYellow;
+            btn_Suppliers_SaveAdd.BackColor = Color.LightYellow;
+            btn_Suppliers_SaveChange.BackColor = Color.LightYellow;
+            btn_Items_AddSave.BackColor = Color.LightYellow;
+            btn_items_changeSave.BackColor = Color.LightYellow;
+            btn_Clients_SearchId.BackColor = Color.LightSeaGreen;
+            btn_items_search.BackColor = Color.LightSeaGreen;
+            btn_Suppliers_search.BackColor = Color.LightSeaGreen;
 
         }
 
@@ -80,7 +99,7 @@ namespace ShopApp
         private void btn_Clients_SaveChange_Click(object sender, EventArgs e)
         {
             if (textBox_Clients_NameChange.Text != "" && textBox_Clients_AdressChange.Text != ""
-                && textBox_Cliients_TelephoneAdd.Text != "")
+                && textBox_Clients_AdressChange.Text != "")
             {
                 Client person = new Client();
                 person.GetSetId = int.Parse(textBox_Clients_IdChange.Text);
@@ -165,6 +184,26 @@ namespace ShopApp
                 dgv_Items[1, i].Value = items[i].GetSetItem;
                 dgv_Items[2, i].Value = items[i].GetSetPrice;
                 dgv_Items[3, i].Value = items[i].GetSetSupplier;
+            }
+        }
+
+        private void ShowOrderDgv()
+        {
+            Item[] items_array = items_list.ToArray();//number of Rows
+            dgv_orders_addNewOrder.ColumnCount = 4; //number of Columns
+            dgv_orders_addNewOrder.RowCount = items_array.Length;//number of Rows
+
+            dgv_orders_addNewOrder.Columns[0].HeaderText = "№";
+            dgv_orders_addNewOrder.Columns[1].HeaderText = "Name of Item";
+            dgv_orders_addNewOrder.Columns[2].HeaderText = "Price";
+            dgv_orders_addNewOrder.Columns[3].HeaderText = "Buyer";
+
+            for (int i = 0; i<items_array.Length; i++)//set data in cells
+            {
+                dgv_orders_addNewOrder[0, i].Value = items_array[i].GetSetId;
+                dgv_orders_addNewOrder[1, i].Value = items_array[i].GetSetItem;
+                dgv_orders_addNewOrder[2, i].Value = items_array[i].GetSetPrice;
+                dgv_orders_addNewOrder[3, i].Value = id_client;
             }
         }
 
@@ -393,5 +432,32 @@ namespace ShopApp
                 dataB.DeleteRowItems(int.Parse(item.Cells[0].Value.ToString()));                
             }
         }
+
+        //button for submit client for order
+        private void btn_Clients_order_Click(object sender, EventArgs e)
+        {
+            
+            foreach (DataGridViewRow client in this.dgvClients.SelectedRows)
+            {
+                id_client=int.Parse(client.Cells[0].Value.ToString());
+            }
+        }
+
+        //add to arraay list name of item which was added to cart
+        private void btn_Items_addToCart_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item_row in this.dgv_Items.SelectedRows)
+            {
+                Item item_selected = new Item();
+                item_selected.GetSetId = int.Parse(item_row.Cells[0].Value.ToString());
+                item_selected.GetSetItem = item_row.Cells[1].Value.ToString();
+                item_selected.GetSetPrice = float.Parse(item_row.Cells[2].Value.ToString());
+                item_selected.GetSetSupplier = item_row.Cells[0].Value.ToString();
+                items_list.Add(item_selected);
+            }
+            ShowOrderDgv();
+        }
+
+
     }
 }
