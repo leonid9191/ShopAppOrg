@@ -80,11 +80,7 @@ namespace ShopApp
             ArrayList items = new ArrayList(GetSuppliersData());
             using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
-                //if (item.GetSetId == -1)
-                //{ command.Parameters.AddWithValue("@id_item", GetItemsNumberMax() + 1); }
-                //else
-                //{ command.Parameters.AddWithValue("@id_item", item.GetSetId == -1); }
-
+                
                 command.Parameters.AddWithValue("@Item", item.GetSetItem);
                 command.Parameters.AddWithValue("@Price", item.GetSetPrice);
                 command.Parameters.AddWithValue("@NameOfCompany", item.GetSetSupplier);
@@ -92,47 +88,25 @@ namespace ShopApp
             }
         }
 
-        //return quality of Clients in db
-        public int GetClientNumber()
+        //Insert subject Order in db
+        public void InsertOrder(Order order)
         {
-            int result;
-            string cmdStr = "SELECT COUNT (*) FROM Clients";
+            string cmdStr = "INSERT INTO Orders (id_client, id_item, delivered)VALUES(@client, @Item, @delivered)";
+            ArrayList items = new ArrayList(GetSuppliersData());
             using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
-                result = ExecuteScalarIntQuery(command);
+                command.Parameters.AddWithValue("@client", order.GetSetIdClient);
+                command.Parameters.AddWithValue("@Item", order.GetSetIdItem);
+                command.Parameters.AddWithValue("@delivered", order.GetSetDelivered);
+                base.ExecuteSimpleQuery(command);
             }
-            return result;
         }
 
-        //return quality of Suppliers in db
-        public int GetSuppliersNumber()
-        {
-            int result;
-            string cmdStr = "SELECT COUNT (*) FROM Suppliers";
-            using (OleDbCommand command = new OleDbCommand(cmdStr))
-            {
-                result = ExecuteScalarIntQuery(command);
-            }
-            return result;
-        }
-
-        //return quality of Items in db
-        public int GetItemsNumber()
-        {
-            int result;
-            string cmdStr = "SELECT COUNT (*) FROM Items";
-            using (OleDbCommand command = new OleDbCommand(cmdStr))
-            {
-                result = ExecuteScalarIntQuery(command);
-            }
-            return result;
-        }
-
-        //return max ID of Suppliers in db
-        //public int GetSuppliersNumberMax()
+        ////return quality of Clients in db
+        //public int GetClientNumber()
         //{
         //    int result;
-        //    string cmdStr = "SELECT MAX(id_suppliers) FROM Suppliers";
+        //    string cmdStr = "SELECT COUNT (*) FROM Clients";
         //    using (OleDbCommand command = new OleDbCommand(cmdStr))
         //    {
         //        result = ExecuteScalarIntQuery(command);
@@ -140,17 +114,54 @@ namespace ShopApp
         //    return result;
         //}
 
-        //return max ID of Items in db
-        public int GetItemsNumberMax()
-        {
-            int result;
-            string cmdStr = "SELECT MAX(Id_item) FROM Items";
-            using (OleDbCommand command = new OleDbCommand(cmdStr))
-            {
-                result = ExecuteScalarIntQuery(command);
-            }
-            return result;
-        }
+        ////return quality of Suppliers in db
+        //public int GetSuppliersNumber()
+        //{
+        //    int result;
+        //    string cmdStr = "SELECT COUNT (*) FROM Suppliers";
+        //    using (OleDbCommand command = new OleDbCommand(cmdStr))
+        //    {
+        //        result = ExecuteScalarIntQuery(command);
+        //    }
+        //    return result;
+        //}
+
+        ////return quality of Items in db
+        //public int GetItemsNumber()
+        //{
+        //    int result;
+        //    string cmdStr = "SELECT COUNT (*) FROM Items";
+        //    using (OleDbCommand command = new OleDbCommand(cmdStr))
+        //    {
+        //        result = ExecuteScalarIntQuery(command);
+        //    }
+        //    return result;
+        //}
+
+        ////return quality of Orders in db
+        //public int GetOrdersNumber()
+        //{
+        //    int result;
+        //    string cmdStr = "SELECT COUNT (*) FROM Orders";
+        //    using (OleDbCommand command = new OleDbCommand(cmdStr))
+        //    {
+        //        result = ExecuteScalarIntQuery(command);
+        //    }
+        //    return result;
+        //}
+        
+
+        ////return max ID of Items in db
+        //public int GetItemsNumberMax()
+        //{
+        //    int result;
+        //    string cmdStr = "SELECT MAX(Id_item) FROM Items";
+        //    using (OleDbCommand command = new OleDbCommand(cmdStr))
+        //    {
+        //        result = ExecuteScalarIntQuery(command);
+        //    }
+        //    return result;
+        //}
 
         //Get array of Clients
         public Client[] GetClientsData()
@@ -203,6 +214,34 @@ namespace ShopApp
                 firms.Add(firm);
             }
             return (Suppliers[])firms.ToArray(typeof(Suppliers));
+        }
+
+        //Get array of Orders
+        public Order[] GetOrdersData()
+        {
+            DataSet ds = new DataSet();
+            ArrayList orders = new ArrayList();
+            string cmdStr = "SELECT * FROM Orders";
+            using (OleDbCommand command = new OleDbCommand(cmdStr))
+                ds = GetMultipleQuery(command);
+
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = ds.Tables[0];
+            }
+            catch { }
+            foreach (DataRow tType in dt.Rows)
+            {
+                Order order = new Order();
+                order.GetSetIdOrder = int.Parse(tType[0].ToString());
+                order.GetSetIdClient = int.Parse(tType[1].ToString());
+                order.GetSetIdItem = int.Parse(tType[2].ToString());
+                order.GetSetDelivered = bool.Parse(tType[3].ToString());
+                
+                orders.Add(order);
+            }
+            return (Order[])orders.ToArray(typeof(Order));
         }
 
         //Get array of Items
@@ -315,6 +354,8 @@ namespace ShopApp
                 base.ExecuteSimpleQuery(command);
             }
         }
+
+        
 
 
     }

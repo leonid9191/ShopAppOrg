@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace ShopApp
 {
-    class Order
+    public class Order
     {
         private int id_order;
         private int id_client;
         private int id_item;
+        private bool delivered;
 
         public Order()
         {
@@ -52,6 +53,18 @@ namespace ShopApp
             {
                 if (value > 0)
                     this.id_item = value;
+            }
+        }
+
+        public bool GetSetDelivered
+        {
+            get
+            {
+                return this.delivered;
+            }
+            set
+            {
+                this.delivered = value;
             }
         }
 

@@ -18,6 +18,7 @@ namespace ShopApp
         private int id_item;
         private int id_client;
         private List<Item> items_list;
+        private float sumOrder;
 
         public shop()
         {
@@ -26,8 +27,8 @@ namespace ShopApp
         }
     
         private void shop_Load(object sender, EventArgs e)
-        {
-
+        {            
+            sumOrder = 0;
             items_list = new List<Item>();
             string dbPath = Application.StartupPath + @"\..\..\dbShop(Access).accdb";
             if (File.Exists(dbPath))
@@ -45,6 +46,7 @@ namespace ShopApp
             ShowClientsDgv();
             ShowSuppliersDgv();
             ShowItemsDgv();
+            ShowOrdersAllDgv();
             
             fillSuppliers();
 
@@ -120,76 +122,40 @@ namespace ShopApp
         //show table with all Clients in db
         private void ShowClientsDgv()
         {
-            int numOfStu = dataB.GetClientNumber();//number of Rows
-          
-            dgvClients.ColumnCount = 4;//number of Columns
-            dgvClients.RowCount = numOfStu;//number of Rows
-
+            Client[] clients = dataB.GetClientsData();//array of clients from db
+            dgvClients.DataSource = clients;
             dgvClients.Columns[0].HeaderText = "id";//Titles
             dgvClients.Columns[1].HeaderText = "Name";
             dgvClients.Columns[2].HeaderText = "Telephone";
             dgvClients.Columns[3].HeaderText = "Adress";
-
-            Client[] clients = dataB.GetClientsData();//array of clients from db
-            for (int i = 0; i < numOfStu; i++)//set data in cells
-            {
-                dgvClients[0, i].Value = clients[i].GetSetId;
-                dgvClients[1, i].Value = clients[i].GetSetName;
-                dgvClients[2, i].Value = clients[i].GetSetTel;
-                dgvClients[3, i].Value = clients[i].GetSetAddress;
-            }           
         }
 
         //show table with all Suppliers in db
         private void ShowSuppliersDgv()
         {
-            int numOfStu = dataB.GetSuppliersNumber();//number of Rows
 
-            dgvSuppliers.ColumnCount = 2;//number of Columns
-            dgvSuppliers.RowCount = numOfStu;//number of Rows
-
-            //dgvSuppliers.Columns[0].HeaderText = "id";//Titles
+            Suppliers[] firms = dataB.GetSuppliersData();//array of suppliers from db
+            dgvSuppliers.DataSource = firms;
             dgvSuppliers.Columns[0].HeaderText = "Name";
             dgvSuppliers.Columns[1].HeaderText = "Telephone";
             
-
-            Suppliers[] firms = dataB.GetSuppliersData();//array of suppliers from db
-            for (int i = 0; i < numOfStu; i++)//set data in cells
-            {
-                //dgvSuppliers[0, i].Value = firms[i].GetSetIdSupplier;
-                dgvSuppliers[0, i].Value = firms[i].GetSetNameCompany;
-                dgvSuppliers[1, i].Value = firms[i].GetSetTel;
-                
-            }
         }
 
         //show table with all Suppliers in db
         private void ShowItemsDgv()
         {
-            int numOfStu = dataB.GetItemsNumber();//number of Rows
-
-            dgv_Items.ColumnCount = 4;//number of Columns
-            dgv_Items.RowCount = numOfStu;//number of Rows
-
+            Item[] items = dataB.GetItemsData();//array of suppliers from db
+            dgv_Items.DataSource = items;
             dgv_Items.Columns[0].HeaderText = "№";
             dgv_Items.Columns[1].HeaderText = "Name";
             dgv_Items.Columns[2].HeaderText = "Price";
             dgv_Items.Columns[3].HeaderText = "Suppliers";
 
-
-            Item[] items = dataB.GetItemsData();//array of suppliers from db
-            for (int i = 0; i < numOfStu; i++)//set data in cells
-            {
-                dgv_Items[0, i].Value = items[i].GetSetId;
-                dgv_Items[1, i].Value = items[i].GetSetItem;
-                dgv_Items[2, i].Value = items[i].GetSetPrice;
-                dgv_Items[3, i].Value = items[i].GetSetSupplier;
-            }
         }
 
         private void ShowOrderDgv()
         {
-            Item[] items_array = items_list.ToArray();//number of Rows
+            Item[] items_array = items_list.ToArray();
             dgv_orders_addNewOrder.ColumnCount = 4; //number of Columns
             dgv_orders_addNewOrder.RowCount = items_array.Length;//number of Rows
 
@@ -205,6 +171,19 @@ namespace ShopApp
                 dgv_orders_addNewOrder[2, i].Value = items_array[i].GetSetPrice;
                 dgv_orders_addNewOrder[3, i].Value = id_client;
             }
+        }
+
+        private void ShowOrdersAllDgv()
+        {
+          
+            Order[] orders = dataB.GetOrdersData();//array of suppliers from db
+            dgv_Orders_All.DataSource = orders;
+            dgv_Orders_All.Columns[0].HeaderText = "Order №";
+            dgv_Orders_All.Columns[1].HeaderText = "ID Client";
+            dgv_Orders_All.Columns[2].HeaderText = "ID Item";
+            dgv_Orders_All.Columns[3].HeaderText = "Delivery status";
+            
+
         }
 
         private void btn_Clients_SearchId_Click(object sender, EventArgs e)
@@ -441,6 +420,7 @@ namespace ShopApp
             {
                 id_client=int.Parse(client.Cells[0].Value.ToString());
             }
+            ShowOrderDgv();//if was choosed before we change it
         }
 
         //add to arraay list name of item which was added to cart
@@ -454,10 +434,45 @@ namespace ShopApp
                 item_selected.GetSetPrice = float.Parse(item_row.Cells[2].Value.ToString());
                 item_selected.GetSetSupplier = item_row.Cells[0].Value.ToString();
                 items_list.Add(item_selected);
+                sumOrder += item_selected.GetSetPrice;
             }
+            lbl_Orders_Summary.Text = sumOrder.ToString();
             ShowOrderDgv();
         }
 
+        private void btn_Orders_Add_Delete_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item_row in this.dgv_orders_addNewOrder.SelectedRows)
+            {               
+                sumOrder-= float.Parse(item_row.Cells[2].Value.ToString());
+                items_list.RemoveAt(item_row.Index);
+                dgv_orders_addNewOrder.Rows.RemoveAt(item_row.Index);
+                lbl_Orders_Summary.Text = sumOrder.ToString();
+            }
+        }
 
+        private void btn_Orders__Add_Save_Click(object sender, EventArgs e)
+        {
+            Item [] item_arr = items_list.ToArray();
+            foreach (DataGridViewRow order_row in this.dgv_orders_addNewOrder.Rows)
+            {
+                Order order = new Order();
+                order.GetSetIdClient = id_client;
+                order.GetSetIdItem = item_arr[order_row.Index].GetSetId;
+                order.GetSetDelivered = false;                
+                dataB.InsertOrder(order);
+            }
+            ShowOrdersAllDgv();
+            
+        }
+
+        private void btn_Orders_ShowName_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow order_row in this.dgv_Orders_All.SelectedRows)
+            {
+                int id = int.Parse(order_row.Cells[3].Value.ToString());
+            }
+            MessageBox.Show("Need to fill in all fields");
+        }
     }
 }
