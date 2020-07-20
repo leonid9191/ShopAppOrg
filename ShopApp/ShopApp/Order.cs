@@ -11,7 +11,6 @@ namespace ShopApp
         private int id_order;
         private int id_client;
         private int id_item;
-        private bool delivered;
 
         public Order()
         {
@@ -56,20 +55,7 @@ namespace ShopApp
             }
         }
 
-        public bool GetSetDelivered
-        {
-            get
-            {
-                return this.delivered;
-            }
-            set
-            {
-                this.delivered = value;
-            }
-        }
-
-
-
+        
     }
 }
 

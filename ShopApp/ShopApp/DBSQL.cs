@@ -40,6 +40,7 @@ namespace ShopApp
             }
         }
 
+
         //Insert to customer table
         public void InsertClient(Client p)
         {
@@ -91,65 +92,65 @@ namespace ShopApp
         //Insert subject Order in db
         public void InsertOrder(Order order)
         {
-            string cmdStr = "INSERT INTO Orders (id_client, id_item, delivered)VALUES(@client, @Item, @delivered)";
+            string cmdStr = "INSERT INTO Orders (id_client, id_item)VALUES(@client, @Item)";
             ArrayList items = new ArrayList(GetSuppliersData());
             using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
                 command.Parameters.AddWithValue("@client", order.GetSetIdClient);
                 command.Parameters.AddWithValue("@Item", order.GetSetIdItem);
-                command.Parameters.AddWithValue("@delivered", order.GetSetDelivered);
+
                 base.ExecuteSimpleQuery(command);
             }
         }
 
-        ////return quality of Clients in db
-        //public int GetClientNumber()
-        //{
-        //    int result;
-        //    string cmdStr = "SELECT COUNT (*) FROM Clients";
-        //    using (OleDbCommand command = new OleDbCommand(cmdStr))
-        //    {
-        //        result = ExecuteScalarIntQuery(command);
-        //    }
-        //    return result;
-        //}
+        //return quality of Clients in db
+        public int GetClientNumber()
+        {
+            int result;
+            string cmdStr = "SELECT COUNT (*) FROM Clients";
+            using (OleDbCommand command = new OleDbCommand(cmdStr))
+            {
+                result = ExecuteScalarIntQuery(command);
+            }
+            return result;
+        }
 
-        ////return quality of Suppliers in db
-        //public int GetSuppliersNumber()
-        //{
-        //    int result;
-        //    string cmdStr = "SELECT COUNT (*) FROM Suppliers";
-        //    using (OleDbCommand command = new OleDbCommand(cmdStr))
-        //    {
-        //        result = ExecuteScalarIntQuery(command);
-        //    }
-        //    return result;
-        //}
+        //return quality of Suppliers in db
+        public int GetSuppliersNumber()
+        {
+            int result;
+            string cmdStr = "SELECT COUNT (*) FROM Suppliers";
+            using (OleDbCommand command = new OleDbCommand(cmdStr))
+            {
+                result = ExecuteScalarIntQuery(command);
+            }
+            return result;
+        }
 
-        ////return quality of Items in db
-        //public int GetItemsNumber()
-        //{
-        //    int result;
-        //    string cmdStr = "SELECT COUNT (*) FROM Items";
-        //    using (OleDbCommand command = new OleDbCommand(cmdStr))
-        //    {
-        //        result = ExecuteScalarIntQuery(command);
-        //    }
-        //    return result;
-        //}
+        //return quality of Items in db
+        public int GetItemsNumber()
+        {
+            int result;
+            string cmdStr = "SELECT COUNT (*) FROM Items";
+            using (OleDbCommand command = new OleDbCommand(cmdStr))
+            {
+                result = ExecuteScalarIntQuery(command);
+            }
+            return result;
+        }
 
-        ////return quality of Orders in db
-        //public int GetOrdersNumber()
-        //{
-        //    int result;
-        //    string cmdStr = "SELECT COUNT (*) FROM Orders";
-        //    using (OleDbCommand command = new OleDbCommand(cmdStr))
-        //    {
-        //        result = ExecuteScalarIntQuery(command);
-        //    }
-        //    return result;
-        //}
-        
+        //return quality of Orders in db
+        public int GetOrdersNumber()
+        {
+            int result;
+            string cmdStr = "SELECT COUNT (*) FROM Orders";
+            using (OleDbCommand command = new OleDbCommand(cmdStr))
+            {
+                result = ExecuteScalarIntQuery(command);
+            }
+            return result;
+        }
+
 
         ////return max ID of Items in db
         //public int GetItemsNumberMax()
@@ -237,7 +238,6 @@ namespace ShopApp
                 order.GetSetIdOrder = int.Parse(tType[0].ToString());
                 order.GetSetIdClient = int.Parse(tType[1].ToString());
                 order.GetSetIdItem = int.Parse(tType[2].ToString());
-                order.GetSetDelivered = bool.Parse(tType[3].ToString());
                 
                 orders.Add(order);
             }
@@ -278,6 +278,16 @@ namespace ShopApp
             using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
                 command.Parameters.AddWithValue("@id_client", id);
+                base.ExecuteSimpleQuery(command);
+            }
+        }
+        //Delete row in Orders in db
+        public void DeleteRowOrder(int id)
+        {
+            string cmdStr = "DELETE FROM Orders WHERE Id_order =@id ";
+            using (OleDbCommand command = new OleDbCommand(cmdStr))
+            {
+                command.Parameters.AddWithValue("@id", id);
                 base.ExecuteSimpleQuery(command);
             }
         }
@@ -341,6 +351,7 @@ namespace ShopApp
             }
         }
 
+
         // Item table update
         public void UpdateItem(Item item)
         {
@@ -354,9 +365,5 @@ namespace ShopApp
                 base.ExecuteSimpleQuery(command);
             }
         }
-
-        
-
-
     }
 }

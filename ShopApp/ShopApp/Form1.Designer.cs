@@ -101,7 +101,6 @@ namespace ShopApp
             this.dgvSuppliers = new System.Windows.Forms.DataGridView();
             this.Orders = new System.Windows.Forms.TabPage();
             this.btn_orders_Delete_AllOrder = new System.Windows.Forms.Button();
-            this.btn_Orders_ChangeDelivery = new System.Windows.Forms.Button();
             this.btn_Orders_ShowItems = new System.Windows.Forms.Button();
             this.btn_Orders_ShowName = new System.Windows.Forms.Button();
             this.dgv_Orders_All = new System.Windows.Forms.DataGridView();
@@ -144,7 +143,7 @@ namespace ShopApp
             this.tabDataBase.Location = new System.Drawing.Point(12, 12);
             this.tabDataBase.Name = "tabDataBase";
             this.tabDataBase.SelectedIndex = 0;
-            this.tabDataBase.Size = new System.Drawing.Size(560, 589);
+            this.tabDataBase.Size = new System.Drawing.Size(581, 589);
             this.tabDataBase.TabIndex = 7;
             // 
             // addStudent
@@ -155,14 +154,14 @@ namespace ShopApp
             this.addStudent.Location = new System.Drawing.Point(4, 22);
             this.addStudent.Name = "addStudent";
             this.addStudent.Padding = new System.Windows.Forms.Padding(3);
-            this.addStudent.Size = new System.Drawing.Size(552, 563);
+            this.addStudent.Size = new System.Drawing.Size(573, 563);
             this.addStudent.TabIndex = 0;
             this.addStudent.Text = "Items";
             this.addStudent.UseVisualStyleBackColor = true;
             // 
             // btn_Items_addToCart
             // 
-            this.btn_Items_addToCart.Location = new System.Drawing.Point(452, 0);
+            this.btn_Items_addToCart.Location = new System.Drawing.Point(477, -2);
             this.btn_Items_addToCart.Name = "btn_Items_addToCart";
             this.btn_Items_addToCart.Size = new System.Drawing.Size(100, 306);
             this.btn_Items_addToCart.TabIndex = 7;
@@ -177,7 +176,7 @@ namespace ShopApp
             this.tabControl1.Location = new System.Drawing.Point(4, 310);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(540, 245);
+            this.tabControl1.Size = new System.Drawing.Size(573, 245);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage_Items_Change
@@ -196,7 +195,7 @@ namespace ShopApp
             this.tabPage_Items_Change.Location = new System.Drawing.Point(4, 22);
             this.tabPage_Items_Change.Name = "tabPage_Items_Change";
             this.tabPage_Items_Change.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Items_Change.Size = new System.Drawing.Size(532, 219);
+            this.tabPage_Items_Change.Size = new System.Drawing.Size(565, 219);
             this.tabPage_Items_Change.TabIndex = 0;
             this.tabPage_Items_Change.Text = "Change";
             this.tabPage_Items_Change.UseVisualStyleBackColor = true;
@@ -207,7 +206,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(209, 108);
+            this.label26.Location = new System.Drawing.Point(214, 108);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(50, 13);
             this.label26.TabIndex = 26;
@@ -216,7 +215,7 @@ namespace ShopApp
             // comboBox_Items_ChangeSuppliers
             // 
             this.comboBox_Items_ChangeSuppliers.FormattingEnabled = true;
-            this.comboBox_Items_ChangeSuppliers.Location = new System.Drawing.Point(206, 124);
+            this.comboBox_Items_ChangeSuppliers.Location = new System.Drawing.Point(211, 124);
             this.comboBox_Items_ChangeSuppliers.Name = "comboBox_Items_ChangeSuppliers";
             this.comboBox_Items_ChangeSuppliers.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Items_ChangeSuppliers.TabIndex = 25;
@@ -238,7 +237,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBox_items_search.Location = new System.Drawing.Point(27, 83);
             this.txtBox_items_search.Name = "txtBox_items_search";
-            this.txtBox_items_search.Size = new System.Drawing.Size(121, 20);
+            this.txtBox_items_search.Size = new System.Drawing.Size(154, 20);
             this.txtBox_items_search.TabIndex = 23;
             // 
             // label3
@@ -255,7 +254,7 @@ namespace ShopApp
             // 
             // btn_items_delete
             // 
-            this.btn_items_delete.Location = new System.Drawing.Point(381, 148);
+            this.btn_items_delete.Location = new System.Drawing.Point(422, 148);
             this.btn_items_delete.Name = "btn_items_delete";
             this.btn_items_delete.Size = new System.Drawing.Size(123, 55);
             this.btn_items_delete.TabIndex = 15;
@@ -268,9 +267,9 @@ namespace ShopApp
             this.btn_items_changeSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_items_changeSave.Location = new System.Drawing.Point(206, 148);
+            this.btn_items_changeSave.Location = new System.Drawing.Point(211, 148);
             this.btn_items_changeSave.Name = "btn_items_changeSave";
-            this.btn_items_changeSave.Size = new System.Drawing.Size(121, 55);
+            this.btn_items_changeSave.Size = new System.Drawing.Size(154, 55);
             this.btn_items_changeSave.TabIndex = 14;
             this.btn_items_changeSave.Text = "Save";
             this.btn_items_changeSave.UseVisualStyleBackColor = true;
@@ -281,9 +280,9 @@ namespace ShopApp
             this.txtBox_Items_ChangePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBox_Items_ChangePrice.Location = new System.Drawing.Point(206, 83);
+            this.txtBox_Items_ChangePrice.Location = new System.Drawing.Point(211, 83);
             this.txtBox_Items_ChangePrice.Name = "txtBox_Items_ChangePrice";
-            this.txtBox_Items_ChangePrice.Size = new System.Drawing.Size(121, 20);
+            this.txtBox_Items_ChangePrice.Size = new System.Drawing.Size(154, 20);
             this.txtBox_Items_ChangePrice.TabIndex = 11;
             // 
             // label4
@@ -292,7 +291,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(209, 66);
+            this.label4.Location = new System.Drawing.Point(214, 66);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 10;
@@ -303,9 +302,9 @@ namespace ShopApp
             this.txtBox_Items_ChangeName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBox_Items_ChangeName.Location = new System.Drawing.Point(206, 32);
+            this.txtBox_Items_ChangeName.Location = new System.Drawing.Point(211, 32);
             this.txtBox_Items_ChangeName.Name = "txtBox_Items_ChangeName";
-            this.txtBox_Items_ChangeName.Size = new System.Drawing.Size(121, 20);
+            this.txtBox_Items_ChangeName.Size = new System.Drawing.Size(154, 20);
             this.txtBox_Items_ChangeName.TabIndex = 9;
             // 
             // label5
@@ -314,7 +313,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(209, 15);
+            this.label5.Location = new System.Drawing.Point(214, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 8;
@@ -332,7 +331,7 @@ namespace ShopApp
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(532, 219);
+            this.tabPage2.Size = new System.Drawing.Size(565, 219);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Add";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -364,7 +363,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Items_AddSave.Location = new System.Drawing.Point(206, 180);
             this.btn_Items_AddSave.Name = "btn_Items_AddSave";
-            this.btn_Items_AddSave.Size = new System.Drawing.Size(121, 23);
+            this.btn_Items_AddSave.Size = new System.Drawing.Size(154, 23);
             this.btn_Items_AddSave.TabIndex = 14;
             this.btn_Items_AddSave.Text = "Save";
             this.btn_Items_AddSave.UseVisualStyleBackColor = true;
@@ -377,7 +376,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBox_Items_AddPrice.Location = new System.Drawing.Point(206, 83);
             this.txtBox_Items_AddPrice.Name = "txtBox_Items_AddPrice";
-            this.txtBox_Items_AddPrice.Size = new System.Drawing.Size(121, 20);
+            this.txtBox_Items_AddPrice.Size = new System.Drawing.Size(154, 20);
             this.txtBox_Items_AddPrice.TabIndex = 11;
             // 
             // label6
@@ -399,7 +398,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBox_Items_AddName.Location = new System.Drawing.Point(206, 32);
             this.txtBox_Items_AddName.Name = "txtBox_Items_AddName";
-            this.txtBox_Items_AddName.Size = new System.Drawing.Size(121, 20);
+            this.txtBox_Items_AddName.Size = new System.Drawing.Size(154, 20);
             this.txtBox_Items_AddName.TabIndex = 9;
             // 
             // label16
@@ -421,7 +420,7 @@ namespace ShopApp
             this.dgv_Items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Items.Location = new System.Drawing.Point(-4, 0);
             this.dgv_Items.Name = "dgv_Items";
-            this.dgv_Items.Size = new System.Drawing.Size(458, 306);
+            this.dgv_Items.Size = new System.Drawing.Size(475, 306);
             this.dgv_Items.TabIndex = 5;
             this.dgv_Items.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Items_CellContentClick);
             // 
@@ -433,14 +432,14 @@ namespace ShopApp
             this.Clients.Location = new System.Drawing.Point(4, 22);
             this.Clients.Name = "Clients";
             this.Clients.Padding = new System.Windows.Forms.Padding(3);
-            this.Clients.Size = new System.Drawing.Size(552, 563);
+            this.Clients.Size = new System.Drawing.Size(573, 563);
             this.Clients.TabIndex = 1;
             this.Clients.Text = "Clients";
             this.Clients.UseVisualStyleBackColor = true;
             // 
             // btn_Clients_order
             // 
-            this.btn_Clients_order.Location = new System.Drawing.Point(456, 0);
+            this.btn_Clients_order.Location = new System.Drawing.Point(476, 0);
             this.btn_Clients_order.Name = "btn_Clients_order";
             this.btn_Clients_order.Size = new System.Drawing.Size(101, 306);
             this.btn_Clients_order.TabIndex = 5;
@@ -455,7 +454,7 @@ namespace ShopApp
             this.Clients_tab.Location = new System.Drawing.Point(3, 312);
             this.Clients_tab.Name = "Clients_tab";
             this.Clients_tab.SelectedIndex = 0;
-            this.Clients_tab.Size = new System.Drawing.Size(540, 245);
+            this.Clients_tab.Size = new System.Drawing.Size(570, 245);
             this.Clients_tab.TabIndex = 4;
             // 
             // Client_Change
@@ -474,16 +473,16 @@ namespace ShopApp
             this.Client_Change.Location = new System.Drawing.Point(4, 22);
             this.Client_Change.Name = "Client_Change";
             this.Client_Change.Padding = new System.Windows.Forms.Padding(3);
-            this.Client_Change.Size = new System.Drawing.Size(532, 219);
+            this.Client_Change.Size = new System.Drawing.Size(562, 219);
             this.Client_Change.TabIndex = 0;
             this.Client_Change.Text = "Change";
             this.Client_Change.UseVisualStyleBackColor = true;
             // 
             // btn_ClientsDelete
             // 
-            this.btn_ClientsDelete.Location = new System.Drawing.Point(93, 143);
+            this.btn_ClientsDelete.Location = new System.Drawing.Point(93, 144);
             this.btn_ClientsDelete.Name = "btn_ClientsDelete";
-            this.btn_ClientsDelete.Size = new System.Drawing.Size(104, 69);
+            this.btn_ClientsDelete.Size = new System.Drawing.Size(151, 69);
             this.btn_ClientsDelete.TabIndex = 22;
             this.btn_ClientsDelete.Text = "Delete";
             this.btn_ClientsDelete.UseVisualStyleBackColor = true;
@@ -491,9 +490,9 @@ namespace ShopApp
             // 
             // btn_Clients_SearchId
             // 
-            this.btn_Clients_SearchId.Location = new System.Drawing.Point(93, 63);
+            this.btn_Clients_SearchId.Location = new System.Drawing.Point(93, 60);
             this.btn_Clients_SearchId.Name = "btn_Clients_SearchId";
-            this.btn_Clients_SearchId.Size = new System.Drawing.Size(75, 23);
+            this.btn_Clients_SearchId.Size = new System.Drawing.Size(104, 69);
             this.btn_Clients_SearchId.TabIndex = 21;
             this.btn_Clients_SearchId.Text = "Search";
             this.btn_Clients_SearchId.UseVisualStyleBackColor = true;
@@ -504,9 +503,9 @@ namespace ShopApp
             this.textBox_Clients_AdressChange.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_Clients_AdressChange.Location = new System.Drawing.Point(316, 115);
+            this.textBox_Clients_AdressChange.Location = new System.Drawing.Point(369, 115);
             this.textBox_Clients_AdressChange.Name = "textBox_Clients_AdressChange";
-            this.textBox_Clients_AdressChange.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Clients_AdressChange.Size = new System.Drawing.Size(151, 20);
             this.textBox_Clients_AdressChange.TabIndex = 20;
             // 
             // label1
@@ -515,7 +514,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(319, 98);
+            this.label1.Location = new System.Drawing.Point(372, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 19;
@@ -528,7 +527,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Clients_IdChange.Location = new System.Drawing.Point(93, 34);
             this.textBox_Clients_IdChange.Name = "textBox_Clients_IdChange";
-            this.textBox_Clients_IdChange.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Clients_IdChange.Size = new System.Drawing.Size(151, 20);
             this.textBox_Clients_IdChange.TabIndex = 18;
             // 
             // label10
@@ -548,9 +547,9 @@ namespace ShopApp
             this.btn_Clients_SaveChange.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Clients_SaveChange.Location = new System.Drawing.Point(316, 143);
+            this.btn_Clients_SaveChange.Location = new System.Drawing.Point(369, 144);
             this.btn_Clients_SaveChange.Name = "btn_Clients_SaveChange";
-            this.btn_Clients_SaveChange.Size = new System.Drawing.Size(121, 69);
+            this.btn_Clients_SaveChange.Size = new System.Drawing.Size(151, 69);
             this.btn_Clients_SaveChange.TabIndex = 14;
             this.btn_Clients_SaveChange.Text = "Save";
             this.btn_Clients_SaveChange.UseVisualStyleBackColor = true;
@@ -561,9 +560,9 @@ namespace ShopApp
             this.textBox_Clients_TelephoneChange.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_Clients_TelephoneChange.Location = new System.Drawing.Point(316, 66);
+            this.textBox_Clients_TelephoneChange.Location = new System.Drawing.Point(369, 66);
             this.textBox_Clients_TelephoneChange.Name = "textBox_Clients_TelephoneChange";
-            this.textBox_Clients_TelephoneChange.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Clients_TelephoneChange.Size = new System.Drawing.Size(151, 20);
             this.textBox_Clients_TelephoneChange.TabIndex = 11;
             // 
             // label11
@@ -572,7 +571,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(319, 49);
+            this.label11.Location = new System.Drawing.Point(372, 49);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(58, 13);
             this.label11.TabIndex = 10;
@@ -583,9 +582,9 @@ namespace ShopApp
             this.textBox_Clients_NameChange.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_Clients_NameChange.Location = new System.Drawing.Point(316, 20);
+            this.textBox_Clients_NameChange.Location = new System.Drawing.Point(369, 20);
             this.textBox_Clients_NameChange.Name = "textBox_Clients_NameChange";
-            this.textBox_Clients_NameChange.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Clients_NameChange.Size = new System.Drawing.Size(151, 20);
             this.textBox_Clients_NameChange.TabIndex = 9;
             // 
             // label12
@@ -594,7 +593,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(319, 3);
+            this.label12.Location = new System.Drawing.Point(372, 3);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(35, 13);
             this.label12.TabIndex = 8;
@@ -614,7 +613,7 @@ namespace ShopApp
             this.Client_Add.Location = new System.Drawing.Point(4, 22);
             this.Client_Add.Name = "Client_Add";
             this.Client_Add.Padding = new System.Windows.Forms.Padding(3);
-            this.Client_Add.Size = new System.Drawing.Size(532, 219);
+            this.Client_Add.Size = new System.Drawing.Size(562, 219);
             this.Client_Add.TabIndex = 1;
             this.Client_Add.Text = "Add";
             this.Client_Add.UseVisualStyleBackColor = true;
@@ -627,7 +626,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Clients_AddressAdd.Location = new System.Drawing.Point(206, 154);
             this.textBox_Clients_AddressAdd.Name = "textBox_Clients_AddressAdd";
-            this.textBox_Clients_AddressAdd.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Clients_AddressAdd.Size = new System.Drawing.Size(151, 20);
             this.textBox_Clients_AddressAdd.TabIndex = 18;
             // 
             // label13
@@ -649,7 +648,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Clients_IdAdd.Location = new System.Drawing.Point(207, 111);
             this.textBox_Clients_IdAdd.Name = "textBox_Clients_IdAdd";
-            this.textBox_Clients_IdAdd.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Clients_IdAdd.Size = new System.Drawing.Size(151, 20);
             this.textBox_Clients_IdAdd.TabIndex = 16;
             this.textBox_Clients_IdAdd.TextChanged += new System.EventHandler(this.textBox_Clients_IdAdd_TextChanged);
             // 
@@ -672,7 +671,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Client_SaveAdd.Location = new System.Drawing.Point(206, 180);
             this.btn_Client_SaveAdd.Name = "btn_Client_SaveAdd";
-            this.btn_Client_SaveAdd.Size = new System.Drawing.Size(121, 23);
+            this.btn_Client_SaveAdd.Size = new System.Drawing.Size(151, 23);
             this.btn_Client_SaveAdd.TabIndex = 14;
             this.btn_Client_SaveAdd.Text = "Save";
             this.btn_Client_SaveAdd.UseVisualStyleBackColor = true;
@@ -685,7 +684,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Cliients_TelephoneAdd.Location = new System.Drawing.Point(207, 69);
             this.textBox_Cliients_TelephoneAdd.Name = "textBox_Cliients_TelephoneAdd";
-            this.textBox_Cliients_TelephoneAdd.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Cliients_TelephoneAdd.Size = new System.Drawing.Size(151, 20);
             this.textBox_Cliients_TelephoneAdd.TabIndex = 11;
             // 
             // label8
@@ -707,7 +706,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Client_NameAdd.Location = new System.Drawing.Point(208, 20);
             this.textBox_Client_NameAdd.Name = "textBox_Client_NameAdd";
-            this.textBox_Client_NameAdd.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Client_NameAdd.Size = new System.Drawing.Size(151, 20);
             this.textBox_Client_NameAdd.TabIndex = 9;
             // 
             // label9
@@ -729,7 +728,7 @@ namespace ShopApp
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClients.Location = new System.Drawing.Point(-4, 0);
             this.dgvClients.Name = "dgvClients";
-            this.dgvClients.Size = new System.Drawing.Size(463, 306);
+            this.dgvClients.Size = new System.Drawing.Size(474, 306);
             this.dgvClients.TabIndex = 1;
             this.dgvClients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellContentClick);
             // 
@@ -740,7 +739,7 @@ namespace ShopApp
             this.suppliers.Location = new System.Drawing.Point(4, 22);
             this.suppliers.Name = "suppliers";
             this.suppliers.Padding = new System.Windows.Forms.Padding(3);
-            this.suppliers.Size = new System.Drawing.Size(552, 563);
+            this.suppliers.Size = new System.Drawing.Size(573, 563);
             this.suppliers.TabIndex = 2;
             this.suppliers.Text = "Suppliers";
             this.suppliers.UseVisualStyleBackColor = true;
@@ -752,7 +751,7 @@ namespace ShopApp
             this.Suppliers_tab.Location = new System.Drawing.Point(3, 312);
             this.Suppliers_tab.Name = "Suppliers_tab";
             this.Suppliers_tab.SelectedIndex = 0;
-            this.Suppliers_tab.Size = new System.Drawing.Size(540, 245);
+            this.Suppliers_tab.Size = new System.Drawing.Size(570, 245);
             this.Suppliers_tab.TabIndex = 4;
             // 
             // Suppliers_Change
@@ -767,7 +766,7 @@ namespace ShopApp
             this.Suppliers_Change.Location = new System.Drawing.Point(4, 22);
             this.Suppliers_Change.Name = "Suppliers_Change";
             this.Suppliers_Change.Padding = new System.Windows.Forms.Padding(3);
-            this.Suppliers_Change.Size = new System.Drawing.Size(532, 219);
+            this.Suppliers_Change.Size = new System.Drawing.Size(562, 219);
             this.Suppliers_Change.TabIndex = 0;
             this.Suppliers_Change.Text = "Change";
             this.Suppliers_Change.UseVisualStyleBackColor = true;
@@ -789,7 +788,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBox_Suppliers_search.Location = new System.Drawing.Point(27, 83);
             this.txtBox_Suppliers_search.Name = "txtBox_Suppliers_search";
-            this.txtBox_Suppliers_search.Size = new System.Drawing.Size(121, 20);
+            this.txtBox_Suppliers_search.Size = new System.Drawing.Size(151, 20);
             this.txtBox_Suppliers_search.TabIndex = 23;
             // 
             // label2
@@ -806,7 +805,7 @@ namespace ShopApp
             // 
             // btn_SuppliersDelete
             // 
-            this.btn_SuppliersDelete.Location = new System.Drawing.Point(381, 148);
+            this.btn_SuppliersDelete.Location = new System.Drawing.Point(416, 148);
             this.btn_SuppliersDelete.Name = "btn_SuppliersDelete";
             this.btn_SuppliersDelete.Size = new System.Drawing.Size(123, 55);
             this.btn_SuppliersDelete.TabIndex = 15;
@@ -821,7 +820,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Suppliers_SaveChange.Location = new System.Drawing.Point(206, 148);
             this.btn_Suppliers_SaveChange.Name = "btn_Suppliers_SaveChange";
-            this.btn_Suppliers_SaveChange.Size = new System.Drawing.Size(121, 55);
+            this.btn_Suppliers_SaveChange.Size = new System.Drawing.Size(151, 55);
             this.btn_Suppliers_SaveChange.TabIndex = 14;
             this.btn_Suppliers_SaveChange.Text = "Save";
             this.btn_Suppliers_SaveChange.UseVisualStyleBackColor = true;
@@ -834,7 +833,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Suppliers_TelChange.Location = new System.Drawing.Point(206, 83);
             this.textBox_Suppliers_TelChange.Name = "textBox_Suppliers_TelChange";
-            this.textBox_Suppliers_TelChange.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Suppliers_TelChange.Size = new System.Drawing.Size(151, 20);
             this.textBox_Suppliers_TelChange.TabIndex = 11;
             // 
             // label14
@@ -859,7 +858,7 @@ namespace ShopApp
             this.Suppliers_Add.Location = new System.Drawing.Point(4, 22);
             this.Suppliers_Add.Name = "Suppliers_Add";
             this.Suppliers_Add.Padding = new System.Windows.Forms.Padding(3);
-            this.Suppliers_Add.Size = new System.Drawing.Size(532, 219);
+            this.Suppliers_Add.Size = new System.Drawing.Size(562, 219);
             this.Suppliers_Add.TabIndex = 1;
             this.Suppliers_Add.Text = "Add";
             this.Suppliers_Add.UseVisualStyleBackColor = true;
@@ -871,7 +870,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Suppliers_SaveAdd.Location = new System.Drawing.Point(206, 180);
             this.btn_Suppliers_SaveAdd.Name = "btn_Suppliers_SaveAdd";
-            this.btn_Suppliers_SaveAdd.Size = new System.Drawing.Size(121, 23);
+            this.btn_Suppliers_SaveAdd.Size = new System.Drawing.Size(151, 23);
             this.btn_Suppliers_SaveAdd.TabIndex = 14;
             this.btn_Suppliers_SaveAdd.Text = "Save";
             this.btn_Suppliers_SaveAdd.UseVisualStyleBackColor = true;
@@ -884,7 +883,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Suppliers_TelAdd.Location = new System.Drawing.Point(206, 83);
             this.textBox_Suppliers_TelAdd.Name = "textBox_Suppliers_TelAdd";
-            this.textBox_Suppliers_TelAdd.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Suppliers_TelAdd.Size = new System.Drawing.Size(151, 20);
             this.textBox_Suppliers_TelAdd.TabIndex = 11;
             // 
             // label17
@@ -906,7 +905,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Suppliers_NameAdd.Location = new System.Drawing.Point(206, 32);
             this.textBox_Suppliers_NameAdd.Name = "textBox_Suppliers_NameAdd";
-            this.textBox_Suppliers_NameAdd.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Suppliers_NameAdd.Size = new System.Drawing.Size(151, 20);
             this.textBox_Suppliers_NameAdd.TabIndex = 9;
             // 
             // label18
@@ -928,14 +927,13 @@ namespace ShopApp
             this.dgvSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSuppliers.Location = new System.Drawing.Point(-4, 0);
             this.dgvSuppliers.Name = "dgvSuppliers";
-            this.dgvSuppliers.Size = new System.Drawing.Size(560, 306);
+            this.dgvSuppliers.Size = new System.Drawing.Size(581, 306);
             this.dgvSuppliers.TabIndex = 1;
             this.dgvSuppliers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             // 
             // Orders
             // 
             this.Orders.Controls.Add(this.btn_orders_Delete_AllOrder);
-            this.Orders.Controls.Add(this.btn_Orders_ChangeDelivery);
             this.Orders.Controls.Add(this.btn_Orders_ShowItems);
             this.Orders.Controls.Add(this.btn_Orders_ShowName);
             this.Orders.Controls.Add(this.dgv_Orders_All);
@@ -943,43 +941,36 @@ namespace ShopApp
             this.Orders.Location = new System.Drawing.Point(4, 22);
             this.Orders.Name = "Orders";
             this.Orders.Padding = new System.Windows.Forms.Padding(3);
-            this.Orders.Size = new System.Drawing.Size(552, 563);
+            this.Orders.Size = new System.Drawing.Size(573, 563);
             this.Orders.TabIndex = 3;
             this.Orders.Text = "Orders";
             this.Orders.UseVisualStyleBackColor = true;
             // 
             // btn_orders_Delete_AllOrder
             // 
-            this.btn_orders_Delete_AllOrder.Location = new System.Drawing.Point(408, 179);
+            this.btn_orders_Delete_AllOrder.Location = new System.Drawing.Point(421, 154);
             this.btn_orders_Delete_AllOrder.Name = "btn_orders_Delete_AllOrder";
-            this.btn_orders_Delete_AllOrder.Size = new System.Drawing.Size(144, 49);
+            this.btn_orders_Delete_AllOrder.Size = new System.Drawing.Size(144, 67);
             this.btn_orders_Delete_AllOrder.TabIndex = 7;
             this.btn_orders_Delete_AllOrder.Text = "Delete order";
             this.btn_orders_Delete_AllOrder.UseVisualStyleBackColor = true;
-            // 
-            // btn_Orders_ChangeDelivery
-            // 
-            this.btn_Orders_ChangeDelivery.Location = new System.Drawing.Point(409, 118);
-            this.btn_Orders_ChangeDelivery.Name = "btn_Orders_ChangeDelivery";
-            this.btn_Orders_ChangeDelivery.Size = new System.Drawing.Size(144, 49);
-            this.btn_Orders_ChangeDelivery.TabIndex = 6;
-            this.btn_Orders_ChangeDelivery.Text = "Change delivery status";
-            this.btn_Orders_ChangeDelivery.UseVisualStyleBackColor = true;
+            this.btn_orders_Delete_AllOrder.Click += new System.EventHandler(this.btn_orders_Delete_AllOrder_Click);
             // 
             // btn_Orders_ShowItems
             // 
-            this.btn_Orders_ShowItems.Location = new System.Drawing.Point(408, 59);
+            this.btn_Orders_ShowItems.Location = new System.Drawing.Point(421, 81);
             this.btn_Orders_ShowItems.Name = "btn_Orders_ShowItems";
-            this.btn_Orders_ShowItems.Size = new System.Drawing.Size(144, 49);
+            this.btn_Orders_ShowItems.Size = new System.Drawing.Size(144, 67);
             this.btn_Orders_ShowItems.TabIndex = 5;
             this.btn_Orders_ShowItems.Text = "Show Item";
             this.btn_Orders_ShowItems.UseVisualStyleBackColor = true;
+            this.btn_Orders_ShowItems.Click += new System.EventHandler(this.btn_Orders_ShowItems_Click);
             // 
             // btn_Orders_ShowName
             // 
-            this.btn_Orders_ShowName.Location = new System.Drawing.Point(409, 0);
+            this.btn_Orders_ShowName.Location = new System.Drawing.Point(422, 8);
             this.btn_Orders_ShowName.Name = "btn_Orders_ShowName";
-            this.btn_Orders_ShowName.Size = new System.Drawing.Size(147, 49);
+            this.btn_Orders_ShowName.Size = new System.Drawing.Size(147, 67);
             this.btn_Orders_ShowName.TabIndex = 4;
             this.btn_Orders_ShowName.Text = "Show Name and adress";
             this.btn_Orders_ShowName.UseVisualStyleBackColor = true;
@@ -993,7 +984,7 @@ namespace ShopApp
             this.dgv_Orders_All.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Orders_All.Location = new System.Drawing.Point(-4, 0);
             this.dgv_Orders_All.Name = "dgv_Orders_All";
-            this.dgv_Orders_All.Size = new System.Drawing.Size(416, 228);
+            this.dgv_Orders_All.Size = new System.Drawing.Size(420, 228);
             this.dgv_Orders_All.TabIndex = 2;
             // 
             // Order_tab
@@ -1002,7 +993,7 @@ namespace ShopApp
             this.Order_tab.Location = new System.Drawing.Point(3, 234);
             this.Order_tab.Name = "Order_tab";
             this.Order_tab.SelectedIndex = 0;
-            this.Order_tab.Size = new System.Drawing.Size(540, 333);
+            this.Order_tab.Size = new System.Drawing.Size(564, 333);
             this.Order_tab.TabIndex = 3;
             // 
             // Order_Add
@@ -1015,7 +1006,7 @@ namespace ShopApp
             this.Order_Add.Location = new System.Drawing.Point(4, 22);
             this.Order_Add.Name = "Order_Add";
             this.Order_Add.Padding = new System.Windows.Forms.Padding(3);
-            this.Order_Add.Size = new System.Drawing.Size(532, 307);
+            this.Order_Add.Size = new System.Drawing.Size(556, 307);
             this.Order_Add.TabIndex = 1;
             this.Order_Add.Text = "Add";
             this.Order_Add.UseVisualStyleBackColor = true;
@@ -1045,7 +1036,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Orders_Add_Delete.Location = new System.Drawing.Point(356, 24);
             this.btn_Orders_Add_Delete.Name = "btn_Orders_Add_Delete";
-            this.btn_Orders_Add_Delete.Size = new System.Drawing.Size(121, 111);
+            this.btn_Orders_Add_Delete.Size = new System.Drawing.Size(145, 111);
             this.btn_Orders_Add_Delete.TabIndex = 16;
             this.btn_Orders_Add_Delete.Text = "Delete item";
             this.btn_Orders_Add_Delete.UseVisualStyleBackColor = true;
@@ -1068,7 +1059,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Orders__Add_Save.Location = new System.Drawing.Point(356, 170);
             this.btn_Orders__Add_Save.Name = "btn_Orders__Add_Save";
-            this.btn_Orders__Add_Save.Size = new System.Drawing.Size(121, 111);
+            this.btn_Orders__Add_Save.Size = new System.Drawing.Size(145, 111);
             this.btn_Orders__Add_Save.TabIndex = 14;
             this.btn_Orders__Add_Save.Text = "Save order";
             this.btn_Orders__Add_Save.UseVisualStyleBackColor = true;
@@ -1078,7 +1069,7 @@ namespace ShopApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 629);
+            this.ClientSize = new System.Drawing.Size(605, 629);
             this.Controls.Add(this.tabDataBase);
             this.Name = "shop";
             this.Text = "Shop";
@@ -1222,7 +1213,6 @@ namespace ShopApp
         private Label label15;
         private Button btn_Orders_ShowName;
         private Button btn_orders_Delete_AllOrder;
-        private Button btn_Orders_ChangeDelivery;
         private Button btn_Orders_ShowItems;
     }
 
