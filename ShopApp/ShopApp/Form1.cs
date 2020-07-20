@@ -228,6 +228,22 @@ namespace ShopApp
             }
 
         }
+        private void ShowOrdersAllDgv(Order[] orders)
+        {
+            dgv_Orders_All.ColumnCount = 3; //number of Columns
+            dgv_Orders_All.RowCount = orders.Length;//number of Rows
+
+            dgv_Orders_All.Columns[0].HeaderText = "Order №";
+            dgv_Orders_All.Columns[1].HeaderText = "ID Client";
+            dgv_Orders_All.Columns[2].HeaderText = "ID Item";
+            for (int i = 0; i < orders.Length; i++)//set data in cells
+            {
+                dgv_Orders_All[0, i].Value = orders[i].GetSetIdOrder;
+                dgv_Orders_All[1, i].Value = orders[i].GetSetIdClient;
+                dgv_Orders_All[2, i].Value = orders[i].GetSetIdItem;
+            }
+
+        }
 
         private void btn_Clients_SearchId_Click(object sender, EventArgs e)
         {
@@ -328,12 +344,10 @@ namespace ShopApp
         {
             string searchValue = txtBox_Suppliers_search.Text;
             dgvSuppliers.ClearSelection();
-            dgvSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            try
-            {
+            dgvSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;          
                 for (; i < dgvSuppliers.RowCount; i++)
                 {
-                    if (dgvSuppliers[0, i].Value.ToString().Contains(searchValue)) //|| row.Cells[2].Value.ToString().Equals(searchValue))
+                    if (dgvSuppliers[0, i].Value.ToString().Contains(searchValue))
                     {
                         dgvSuppliers[0, i].Selected = true;
                         textBox_Suppliers_TelChange.Text = dgvSuppliers[1, i].Value.ToString();
@@ -344,12 +358,7 @@ namespace ShopApp
                         return;
                     }
                 }
-                i = 0;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
+                i = 0;                      
         }
 
         private void btn_Items_AddSave_Click(object sender, EventArgs e)
@@ -560,10 +569,30 @@ namespace ShopApp
         {
             foreach (DataGridViewRow item_row in this.dgv_Orders_All.SelectedRows)
             {
-                dataB.DeleteRowItems(int.Parse(item_row.Cells[0].Value.ToString()));
+                dataB.DeleteRowOrder(int.Parse(item_row.Cells[0].Value.ToString()));
                 dgv_Orders_All.Rows.RemoveAt(item_row.Index);
 
             }
+        }
+
+        private void btn_Orders_SearchById_Click(object sender, EventArgs e)
+        {
+            List<Order> orders = new List<Order>();            
+            string searchValue = txtBox_Orders_Search.Text;
+                for (i=0; i < dgv_Orders_All.RowCount; i++)
+                {
+                    if (dgv_Orders_All[1, i].Value.ToString().Equals(searchValue))
+                    {
+                        Order order = new Order();
+                        order.GetSetIdOrder = int.Parse(dgv_Orders_All[0, i].Value.ToString());
+                        order.GetSetIdClient = int.Parse(dgv_Orders_All[1, i].Value.ToString());
+                        order.GetSetIdItem = int.Parse(dgv_Orders_All[2, i].Value.ToString());
+                        orders.Add(order);
+                    }
+                }
+                ShowOrdersAllDgv (orders.ToArray());
+                if (searchValue == "")
+                    ShowOrdersAllDgv();
         }
     }
 }

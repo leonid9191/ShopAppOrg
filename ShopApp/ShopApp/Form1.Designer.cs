@@ -100,6 +100,9 @@ namespace ShopApp
             this.label18 = new System.Windows.Forms.Label();
             this.dgvSuppliers = new System.Windows.Forms.DataGridView();
             this.Orders = new System.Windows.Forms.TabPage();
+            this.btn_Orders_SearchById = new System.Windows.Forms.Button();
+            this.txtBox_Orders_Search = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.btn_orders_Delete_AllOrder = new System.Windows.Forms.Button();
             this.btn_Orders_ShowItems = new System.Windows.Forms.Button();
             this.btn_Orders_ShowName = new System.Windows.Forms.Button();
@@ -933,6 +936,9 @@ namespace ShopApp
             // 
             // Orders
             // 
+            this.Orders.Controls.Add(this.btn_Orders_SearchById);
+            this.Orders.Controls.Add(this.txtBox_Orders_Search);
+            this.Orders.Controls.Add(this.label19);
             this.Orders.Controls.Add(this.btn_orders_Delete_AllOrder);
             this.Orders.Controls.Add(this.btn_Orders_ShowItems);
             this.Orders.Controls.Add(this.btn_Orders_ShowName);
@@ -946,11 +952,43 @@ namespace ShopApp
             this.Orders.Text = "Orders";
             this.Orders.UseVisualStyleBackColor = true;
             // 
+            // btn_Orders_SearchById
+            // 
+            this.btn_Orders_SearchById.Location = new System.Drawing.Point(422, 223);
+            this.btn_Orders_SearchById.Name = "btn_Orders_SearchById";
+            this.btn_Orders_SearchById.Size = new System.Drawing.Size(145, 54);
+            this.btn_Orders_SearchById.TabIndex = 24;
+            this.btn_Orders_SearchById.Text = "Search";
+            this.btn_Orders_SearchById.UseVisualStyleBackColor = true;
+            this.btn_Orders_SearchById.Click += new System.EventHandler(this.btn_Orders_SearchById_Click);
+            // 
+            // txtBox_Orders_Search
+            // 
+            this.txtBox_Orders_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBox_Orders_Search.Location = new System.Drawing.Point(422, 202);
+            this.txtBox_Orders_Search.Name = "txtBox_Orders_Search";
+            this.txtBox_Orders_Search.Size = new System.Drawing.Size(145, 20);
+            this.txtBox_Orders_Search.TabIndex = 23;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(422, 185);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(97, 13);
+            this.label19.TabIndex = 22;
+            this.label19.Text = "ID Client for search";
+            // 
             // btn_orders_Delete_AllOrder
             // 
-            this.btn_orders_Delete_AllOrder.Location = new System.Drawing.Point(421, 154);
+            this.btn_orders_Delete_AllOrder.Location = new System.Drawing.Point(422, 128);
             this.btn_orders_Delete_AllOrder.Name = "btn_orders_Delete_AllOrder";
-            this.btn_orders_Delete_AllOrder.Size = new System.Drawing.Size(144, 67);
+            this.btn_orders_Delete_AllOrder.Size = new System.Drawing.Size(147, 54);
             this.btn_orders_Delete_AllOrder.TabIndex = 7;
             this.btn_orders_Delete_AllOrder.Text = "Delete order";
             this.btn_orders_Delete_AllOrder.UseVisualStyleBackColor = true;
@@ -958,9 +996,9 @@ namespace ShopApp
             // 
             // btn_Orders_ShowItems
             // 
-            this.btn_Orders_ShowItems.Location = new System.Drawing.Point(421, 81);
+            this.btn_Orders_ShowItems.Location = new System.Drawing.Point(422, 68);
             this.btn_Orders_ShowItems.Name = "btn_Orders_ShowItems";
-            this.btn_Orders_ShowItems.Size = new System.Drawing.Size(144, 67);
+            this.btn_Orders_ShowItems.Size = new System.Drawing.Size(147, 54);
             this.btn_Orders_ShowItems.TabIndex = 5;
             this.btn_Orders_ShowItems.Text = "Show Item";
             this.btn_Orders_ShowItems.UseVisualStyleBackColor = true;
@@ -970,7 +1008,7 @@ namespace ShopApp
             // 
             this.btn_Orders_ShowName.Location = new System.Drawing.Point(422, 8);
             this.btn_Orders_ShowName.Name = "btn_Orders_ShowName";
-            this.btn_Orders_ShowName.Size = new System.Drawing.Size(147, 67);
+            this.btn_Orders_ShowName.Size = new System.Drawing.Size(147, 54);
             this.btn_Orders_ShowName.TabIndex = 4;
             this.btn_Orders_ShowName.Text = "Show Name and adress";
             this.btn_Orders_ShowName.UseVisualStyleBackColor = true;
@@ -984,16 +1022,16 @@ namespace ShopApp
             this.dgv_Orders_All.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Orders_All.Location = new System.Drawing.Point(-4, 0);
             this.dgv_Orders_All.Name = "dgv_Orders_All";
-            this.dgv_Orders_All.Size = new System.Drawing.Size(420, 228);
+            this.dgv_Orders_All.Size = new System.Drawing.Size(420, 255);
             this.dgv_Orders_All.TabIndex = 2;
             // 
             // Order_tab
             // 
             this.Order_tab.Controls.Add(this.Order_Add);
-            this.Order_tab.Location = new System.Drawing.Point(3, 234);
+            this.Order_tab.Location = new System.Drawing.Point(3, 261);
             this.Order_tab.Name = "Order_tab";
             this.Order_tab.SelectedIndex = 0;
-            this.Order_tab.Size = new System.Drawing.Size(564, 333);
+            this.Order_tab.Size = new System.Drawing.Size(564, 306);
             this.Order_tab.TabIndex = 3;
             // 
             // Order_Add
@@ -1006,7 +1044,7 @@ namespace ShopApp
             this.Order_Add.Location = new System.Drawing.Point(4, 22);
             this.Order_Add.Name = "Order_Add";
             this.Order_Add.Padding = new System.Windows.Forms.Padding(3);
-            this.Order_Add.Size = new System.Drawing.Size(556, 307);
+            this.Order_Add.Size = new System.Drawing.Size(556, 280);
             this.Order_Add.TabIndex = 1;
             this.Order_Add.Text = "Add";
             this.Order_Add.UseVisualStyleBackColor = true;
@@ -1036,7 +1074,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Orders_Add_Delete.Location = new System.Drawing.Point(356, 24);
             this.btn_Orders_Add_Delete.Name = "btn_Orders_Add_Delete";
-            this.btn_Orders_Add_Delete.Size = new System.Drawing.Size(145, 111);
+            this.btn_Orders_Add_Delete.Size = new System.Drawing.Size(145, 84);
             this.btn_Orders_Add_Delete.TabIndex = 16;
             this.btn_Orders_Add_Delete.Text = "Delete item";
             this.btn_Orders_Add_Delete.UseVisualStyleBackColor = true;
@@ -1059,7 +1097,7 @@ namespace ShopApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Orders__Add_Save.Location = new System.Drawing.Point(356, 170);
             this.btn_Orders__Add_Save.Name = "btn_Orders__Add_Save";
-            this.btn_Orders__Add_Save.Size = new System.Drawing.Size(145, 111);
+            this.btn_Orders__Add_Save.Size = new System.Drawing.Size(145, 84);
             this.btn_Orders__Add_Save.TabIndex = 14;
             this.btn_Orders__Add_Save.Text = "Save order";
             this.btn_Orders__Add_Save.UseVisualStyleBackColor = true;
@@ -1097,6 +1135,7 @@ namespace ShopApp
             this.Suppliers_Add.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).EndInit();
             this.Orders.ResumeLayout(false);
+            this.Orders.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders_All)).EndInit();
             this.Order_tab.ResumeLayout(false);
             this.Order_Add.ResumeLayout(false);
@@ -1214,6 +1253,9 @@ namespace ShopApp
         private Button btn_Orders_ShowName;
         private Button btn_orders_Delete_AllOrder;
         private Button btn_Orders_ShowItems;
+        private Button btn_Orders_SearchById;
+        private TextBox txtBox_Orders_Search;
+        private Label label19;
     }
 
     internal class dbShopDataSetTableAdapters
