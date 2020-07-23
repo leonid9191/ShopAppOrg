@@ -114,6 +114,7 @@ namespace ShopApp
             this.btn_Orders_Add_Delete = new System.Windows.Forms.Button();
             this.dgv_orders_addNewOrder = new System.Windows.Forms.DataGridView();
             this.btn_Orders__Add_Save = new System.Windows.Forms.Button();
+            this.btn_clients_createPDF = new System.Windows.Forms.Button();
             this.tabDataBase.SuspendLayout();
             this.addStudent.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -423,12 +424,14 @@ namespace ShopApp
             this.dgv_Items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Items.Location = new System.Drawing.Point(-4, 0);
             this.dgv_Items.Name = "dgv_Items";
+            this.dgv_Items.ReadOnly = true;
             this.dgv_Items.Size = new System.Drawing.Size(475, 306);
             this.dgv_Items.TabIndex = 5;
             this.dgv_Items.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Items_CellContentClick);
             // 
             // Clients
             // 
+            this.Clients.Controls.Add(this.btn_clients_createPDF);
             this.Clients.Controls.Add(this.btn_Clients_order);
             this.Clients.Controls.Add(this.Clients_tab);
             this.Clients.Controls.Add(this.dgvClients);
@@ -442,9 +445,9 @@ namespace ShopApp
             // 
             // btn_Clients_order
             // 
-            this.btn_Clients_order.Location = new System.Drawing.Point(476, 0);
+            this.btn_Clients_order.Location = new System.Drawing.Point(467, 0);
             this.btn_Clients_order.Name = "btn_Clients_order";
-            this.btn_Clients_order.Size = new System.Drawing.Size(101, 306);
+            this.btn_Clients_order.Size = new System.Drawing.Size(110, 150);
             this.btn_Clients_order.TabIndex = 5;
             this.btn_Clients_order.Text = "Buyer for order";
             this.btn_Clients_order.UseVisualStyleBackColor = true;
@@ -731,6 +734,7 @@ namespace ShopApp
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClients.Location = new System.Drawing.Point(-4, 0);
             this.dgvClients.Name = "dgvClients";
+            this.dgvClients.ReadOnly = true;
             this.dgvClients.Size = new System.Drawing.Size(474, 306);
             this.dgvClients.TabIndex = 1;
             this.dgvClients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellContentClick);
@@ -1018,10 +1022,10 @@ namespace ShopApp
             // 
             this.dgv_Orders_All.AllowUserToAddRows = false;
             this.dgv_Orders_All.AllowUserToDeleteRows = false;
-            this.dgv_Orders_All.AllowUserToOrderColumns = true;
             this.dgv_Orders_All.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Orders_All.Location = new System.Drawing.Point(-4, 0);
             this.dgv_Orders_All.Name = "dgv_Orders_All";
+            this.dgv_Orders_All.ReadOnly = true;
             this.dgv_Orders_All.Size = new System.Drawing.Size(420, 255);
             this.dgv_Orders_All.TabIndex = 2;
             // 
@@ -1102,6 +1106,16 @@ namespace ShopApp
             this.btn_Orders__Add_Save.Text = "Save order";
             this.btn_Orders__Add_Save.UseVisualStyleBackColor = true;
             this.btn_Orders__Add_Save.Click += new System.EventHandler(this.btn_Orders__Add_Save_Click);
+            // 
+            // btn_clients_createPDF
+            // 
+            this.btn_clients_createPDF.Location = new System.Drawing.Point(467, 156);
+            this.btn_clients_createPDF.Name = "btn_clients_createPDF";
+            this.btn_clients_createPDF.Size = new System.Drawing.Size(106, 150);
+            this.btn_clients_createPDF.TabIndex = 6;
+            this.btn_clients_createPDF.Text = "Create PDF with clients";
+            this.btn_clients_createPDF.UseVisualStyleBackColor = true;
+            this.btn_clients_createPDF.Click += new System.EventHandler(this.btn_clients_createPDF_Click);
             // 
             // shop
             // 
@@ -1256,6 +1270,7 @@ namespace ShopApp
         private Button btn_Orders_SearchById;
         private TextBox txtBox_Orders_Search;
         private Label label19;
+        private Button btn_clients_createPDF;
     }
 
     internal class dbShopDataSetTableAdapters

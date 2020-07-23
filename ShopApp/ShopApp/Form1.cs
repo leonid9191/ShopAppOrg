@@ -571,10 +571,10 @@ namespace ShopApp
             {
                 dataB.DeleteRowOrder(int.Parse(item_row.Cells[0].Value.ToString()));
                 dgv_Orders_All.Rows.RemoveAt(item_row.Index);
-
             }
         }
 
+        //
         private void btn_Orders_SearchById_Click(object sender, EventArgs e)
         {
             List<Order> orders = new List<Order>();            
@@ -593,6 +593,18 @@ namespace ShopApp
                 ShowOrdersAllDgv (orders.ToArray());
                 if (searchValue == "")
                     ShowOrdersAllDgv();
+        }
+
+        //Button create PDF file with all Clients
+        private void btn_clients_createPDF_Click(object sender, EventArgs e)
+        {
+            createPDF nPdf = new createPDF();
+            Client[] clients = dataB.GetClientsData();
+
+            nPdf.filePdfWithName("ClientsList.pdf");
+            nPdf.setTitle("This is our Clients!");
+            nPdf.clientsToPdf(clients);
+            nPdf.CloseReport();
         }
     }
 }
