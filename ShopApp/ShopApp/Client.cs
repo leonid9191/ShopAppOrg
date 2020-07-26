@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//Pikiner Artem
+//Chernobylskiy Leonid
 
 namespace ShopApp
 {
@@ -18,6 +20,7 @@ namespace ShopApp
             this.id_client = -1;
         }
 
+        //Getters and  setters for parametrs
         public int GetSetId
         {
             get

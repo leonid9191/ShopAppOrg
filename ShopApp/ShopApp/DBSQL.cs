@@ -63,11 +63,7 @@ namespace ShopApp
             ArrayList firms = new ArrayList(GetSuppliersData());
             using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
-                //if (firm.GetSetIdSupplier == -1)
-                //{ command.Parameters.AddWithValue("@id", GetSuppliersNumberMax() + 1); }
-                //else
-                //{ command.Parameters.AddWithValue("@id", firm.GetSetIdSupplier == -1); }
-
+                
                 command.Parameters.AddWithValue("@Name", firm.GetSetNameCompany);
                 command.Parameters.AddWithValue("@Telephone", firm.GetSetTel);
                 base.ExecuteSimpleQuery(command);
@@ -150,20 +146,7 @@ namespace ShopApp
             }
             return result;
         }
-
-
-        ////return max ID of Items in db
-        //public int GetItemsNumberMax()
-        //{
-        //    int result;
-        //    string cmdStr = "SELECT MAX(Id_item) FROM Items";
-        //    using (OleDbCommand command = new OleDbCommand(cmdStr))
-        //    {
-        //        result = ExecuteScalarIntQuery(command);
-        //    }
-        //    return result;
-        //}
-
+        
         //Get array of Clients
         public Client[] GetClientsData()
         {
@@ -211,7 +194,6 @@ namespace ShopApp
                 Suppliers firm = new Suppliers();
                 firm.GetSetNameCompany = tType[0].ToString();
                 firm.GetSetTel = tType[1].ToString();
-                //firm.GetSetIdSupplier = int.Parse(tType[0].ToString());
                 firms.Add(firm);
             }
             return (Suppliers[])firms.ToArray(typeof(Suppliers));
@@ -304,7 +286,7 @@ namespace ShopApp
             
         }
 
-        //Delete row in Items in db
+        //Delete row in Items in db by id
         public void DeleteRowItems(int id)
         {
             string cmdStr = "DELETE FROM Items WHERE Id_item =@id_item";
@@ -314,7 +296,7 @@ namespace ShopApp
                 base.ExecuteSimpleQuery(command);
             }
         }
-
+        //Delete row in Items in db by name
         public void DeleteRowItems(string name)
         {
             string cmdStr = "DELETE FROM Items WHERE NameOfCompany =@NameOfCompany";
@@ -328,13 +310,13 @@ namespace ShopApp
         // customer table update
         public void UpdateClient(Client p)
         {
-            string cmdStr = "UPDATE Clients SET Name = ?, Telephone = ?,  Address = ? WHERE id_client = ?";
+            string cmdStr = "UPDATE Clients SET Name = ?, Telephone = ?,  Address = ? WHERE Id_client = ?";
             using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
                 command.Parameters.AddWithValue("Name", p.GetSetName);
                 command.Parameters.AddWithValue("Telephone", p.GetSetTel);
-                command.Parameters.AddWithValue("Adress", p.GetSetAddress);
-                command.Parameters.AddWithValue("id_client", p.GetSetId);
+                command.Parameters.AddWithValue("Address", p.GetSetAddress);
+                command.Parameters.AddWithValue("Id_client", p.GetSetId);
                 base.ExecuteSimpleQuery(command);
             }
         }

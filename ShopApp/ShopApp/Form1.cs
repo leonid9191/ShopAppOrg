@@ -27,6 +27,7 @@ namespace ShopApp
 
         }
     
+
         private void shop_Load(object sender, EventArgs e)
         {            
             sumOrder = 0;
@@ -72,18 +73,17 @@ namespace ShopApp
         //show table with all Clients in db
         private void ShowClientsDgv()
         {
-            int numOfStu = dataB.GetClientNumber();//number of Rows
-
+            int numOfClient = dataB.GetClientNumber();//number of Rows
+            dgvClients.ClearSelection();
+            dgvClients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClients.ColumnCount = 4;//number of Columns
-            dgvClients.RowCount = numOfStu;//number of Rows
-
+            dgvClients.RowCount = numOfClient;//number of Rows
             dgvClients.Columns[0].HeaderText = "id";//Titles
             dgvClients.Columns[1].HeaderText = "Name";
             dgvClients.Columns[2].HeaderText = "Telephone";
             dgvClients.Columns[3].HeaderText = "Adress";
-
             Client[] clients = dataB.GetClientsData();//array of clients from db
-            for (int i = 0; i < numOfStu; i++)//set data in cells
+            for (int i = 0; i < numOfClient; i++)//set data in cells
             {
                 dgvClients[0, i].Value = clients[i].GetSetId;
                 dgvClients[1, i].Value = clients[i].GetSetName;
@@ -94,16 +94,17 @@ namespace ShopApp
         //show table with all Suppliers in db
         private void ShowSuppliersDgv()
         {
-            int numOfStu = dataB.GetSuppliersNumber();//number of Rows
-
+            int numOfSuppliers = dataB.GetSuppliersNumber();//number of Rows
+            dgvSuppliers.ClearSelection();
+            dgvSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvSuppliers.ColumnCount = 2;//number of Columns
-            dgvSuppliers.RowCount = numOfStu;//number of Rows
+            dgvSuppliers.RowCount = numOfSuppliers;//number of Rows
 
             dgvSuppliers.Columns[0].HeaderText = "Name";
             dgvSuppliers.Columns[1].HeaderText = "Telephone";
 
             Suppliers[] firms = dataB.GetSuppliersData();//array of suppliers from db
-            for (int i = 0; i < numOfStu; i++)//set data in cells
+            for (int i = 0; i < numOfSuppliers; i++)//set data in cells
             {
                 dgvSuppliers[0, i].Value = firms[i].GetSetNameCompany;
                 dgvSuppliers[1, i].Value = firms[i].GetSetTel;
@@ -115,7 +116,8 @@ namespace ShopApp
         private void ShowItemsDgv()
         {
             int numOfItem = dataB.GetItemsNumber();//number of Rows
-
+            dgv_Items.ClearSelection();
+            dgv_Items.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_Items.ColumnCount = 4;//number of Columns
             dgv_Items.RowCount = numOfItem;//number of Rows
             dgv_Items.Columns[0].HeaderText = "№";
@@ -135,6 +137,7 @@ namespace ShopApp
             }
         }
 
+        //Adding client  to db 
         private void btn_Client_SaveAdd_Click(object sender, EventArgs e)
         {           
             if (textBox_Clients_IdAdd.Text != "" && textBox_Client_NameAdd.Text != "" && textBox_Clients_AddressAdd.Text != "" 
@@ -173,7 +176,7 @@ namespace ShopApp
                 && textBox_Clients_AdressChange.Text != "")
             {
                 Client person = new Client();
-                person.GetSetId = int.Parse(textBox_Clients_IdChange.Text);
+                person.GetSetId = id_client;
                 person.GetSetName = textBox_Clients_NameChange.Text;
                 person.GetSetTel = textBox_Clients_TelephoneChange.Text;
                 person.GetSetAddress = textBox_Clients_AdressChange.Text;
@@ -189,9 +192,11 @@ namespace ShopApp
         }
 
         
-
+        //Show cart with items and id  
         private void ShowOrderDgv()
         {
+            dgv_orders_addNewOrder.ClearSelection();
+            dgv_orders_addNewOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             Item[] items_array = items_list.ToArray();
             dgv_orders_addNewOrder.ColumnCount = 4; //number of Columns
             dgv_orders_addNewOrder.RowCount = items_array.Length;//number of Rows
@@ -210,9 +215,12 @@ namespace ShopApp
             }
         }
 
+        //Show all orders in one tabel
         private void ShowOrdersAllDgv()
         {
-          
+
+            dgv_Orders_All.ClearSelection();
+            dgv_Orders_All.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             Order[] orders = dataB.GetOrdersData();//array of suppliers from db
             dgv_Orders_All.ColumnCount = 3; //number of Columns
             dgv_Orders_All.RowCount = orders.Length;//number of Rows
@@ -228,6 +236,8 @@ namespace ShopApp
             }
 
         }
+
+        //function for search orders by id. show orders that were found
         private void ShowOrdersAllDgv(Order[] orders)
         {
             dgv_Orders_All.ColumnCount = 3; //number of Columns
@@ -245,37 +255,45 @@ namespace ShopApp
 
         }
 
+        //Button Searching Client by id 
         private void btn_Clients_SearchId_Click(object sender, EventArgs e)
         {
             string searchValue = textBox_Clients_IdChange.Text;
             dgvClients.ClearSelection();
             dgvClients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            try
+            if (searchValue == "")
+                MessageBox.Show("You need to fill field for search");
+            else
             {
-                for (; i < dgvClients.RowCount; i++)
+                try
                 {
-                    if (dgvClients[0, i].Value.ToString().Contains(searchValue))//search the same name of item and pull all information into textBox
+                    for (; i < dgvClients.RowCount; i++)
                     {
-                        dgvClients[0,i].Selected = true;
-                        textBox_Clients_NameChange.Text = dgvClients[1, i].Value.ToString();
-                        textBox_Clients_TelephoneChange.Text = dgvClients[2, i].Value.ToString();
-                        textBox_Clients_AdressChange.Text = dgvClients[3, i].Value.ToString();
-                        if (i < dgvClients.RowCount - 1)
-                            i++;
-                        else
-                            i = 0;
-                        return;
-                    }                    
+                        if (dgvClients[0, i].Value.ToString().Contains(searchValue))//search the same name of item and pull all information into textBox
+                        {
+                            dgvClients[0, i].Selected = true;
+                            id_client =int.Parse(dgvClients[0, i].Value.ToString());
+                            textBox_Clients_NameChange.Text = dgvClients[1, i].Value.ToString();
+                            textBox_Clients_TelephoneChange.Text = dgvClients[2, i].Value.ToString();
+                            textBox_Clients_AdressChange.Text = dgvClients[3, i].Value.ToString();
+                            if (i < dgvClients.RowCount - 1)
+                                i++;
+                            else
+                                i = 0;
+                            return;
+                        }
+                    }
+                    i = 0;
                 }
-                i = 0;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
             }
 
         }
 
+        //Button delete selected client
         private void btn_ClientsDelete_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item in this.dgvClients.SelectedRows)
@@ -285,6 +303,7 @@ namespace ShopApp
             }
         }
 
+        //Button saving new  firm of supplier
         private void btn_Suppliers_SaveAdd_Click(object sender, EventArgs e)
         {
             if (textBox_Suppliers_NameAdd.Text != "" && textBox_Suppliers_TelAdd.Text != "" )
@@ -307,6 +326,8 @@ namespace ShopApp
             fillSuppliers();
         }
 
+
+        //Button delete selected supplier
         private void btn_SuppliersDelete_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item in this.dgvSuppliers.SelectedRows)
@@ -319,8 +340,7 @@ namespace ShopApp
             fillSuppliers();
         }
 
-
-
+        //Button saving changes firm of supplier
         private void btn_Suppliers_SaveChange_Click(object sender, EventArgs e)
         {
             if (textBox_Suppliers_TelChange.Text != "")
@@ -339,7 +359,7 @@ namespace ShopApp
             fillSuppliers();
         }
 
-
+        //button searching suppliers by name
         private void btn_Suppliers_search_Click_1(object sender, EventArgs e)
         {
             string searchValue = txtBox_Suppliers_search.Text;
@@ -361,29 +381,7 @@ namespace ShopApp
                 i = 0;                      
         }
 
-        private void btn_Items_AddSave_Click(object sender, EventArgs e)
-        {
-            if (txtBox_Items_AddName.Text != "" && txtBox_Items_AddPrice.Text != "")
-            {
-                try
-                {
-                    Item item = new Item();
-                    
-                    item.GetSetItem = txtBox_Items_AddName.Text;
-                    item.GetSetPrice = float.Parse(txtBox_Items_AddPrice.Text);
-                    item.GetSetSupplier = comboBox_Items_AddSuppliers.Text;
-                    dataB.InsertItem(item);
-                    MessageBox.Show("DataBase added");
-                    ShowItemsDgv();
-                }
-                catch (Exception ex) { MessageBox.Show(ex.Message); }
-            }
-            else
-            {
-                MessageBox.Show("Need to fill in all fields");
-            }
-        }
-
+        //fill combobox
         private void fillSuppliers()
         {
             Suppliers[] firms = dataB.GetSuppliersData();
@@ -396,6 +394,7 @@ namespace ShopApp
             }
         }
 
+        //Button saving new items
         private void btn_Items_AddSave_Click_1(object sender, EventArgs e)
         {
             if (txtBox_Items_AddName.Text != "" && txtBox_Items_AddPrice.Text != "")
@@ -419,19 +418,23 @@ namespace ShopApp
             }
         }
 
+        //button searching items by name
         private void btn_items_search_Click(object sender, EventArgs e)
         {
             string searchValue = txtBox_items_search.Text;
+
             dgv_Items.ClearSelection();
             dgv_Items.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            try
+            if (searchValue == "")
+                MessageBox.Show("You need to fill field for search");
+            else
             {
-                for(; i < dgv_Items.RowCount; i++)
+                for (; i < dgv_Items.RowCount; i++)
                 {
-                    if (dgv_Items[1,i].Value.ToString().Contains(searchValue))//search the same name of item and pull all information into textBox
+                    if (dgv_Items[1, i].Value.ToString().Contains(searchValue))//search the same name of item and pull all information into textBox
                     {
                         dgv_Items[1, i].Selected = true;
-                        id_item = int.Parse(dgv_Items[0,i].Value.ToString());
+                        id_item = int.Parse(dgv_Items[0, i].Value.ToString());
                         txtBox_Items_ChangeName.Text = dgv_Items[1, i].Value.ToString();
                         txtBox_Items_ChangePrice.Text = dgv_Items[2, i].Value.ToString();
                         comboBox_Items_ChangeSuppliers.Text = dgv_Items[3, i].Value.ToString();
@@ -442,14 +445,11 @@ namespace ShopApp
                         return;
                     }
                 }
-                i = 0; 
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
+                i = 0;
             }
         }
 
+        //button saving changes of item
         private void btn_items_changeSave_Click(object sender, EventArgs e)
         {
             if (txtBox_Items_ChangeName.Text != "" && txtBox_Items_ChangePrice.Text != "")                
@@ -470,6 +470,7 @@ namespace ShopApp
             }
         }
 
+        //button delete selected row of item
         private void btn_items_delete_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item in this.dgv_Items.SelectedRows)
@@ -507,6 +508,7 @@ namespace ShopApp
             ShowOrderDgv();
         }
 
+        //button delete items in cart 
         private void btn_Orders_Add_Delete_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item_row in this.dgv_orders_addNewOrder.SelectedRows)
@@ -518,6 +520,7 @@ namespace ShopApp
             }
         }
 
+        // button saves order in cart and write it to tabels of orders
         private void btn_Orders__Add_Save_Click(object sender, EventArgs e)
         {
             Item [] item_arr = items_list.ToArray();
@@ -564,7 +567,7 @@ namespace ShopApp
                 }
         }
 
-
+        //Delete selected line with order
         private void btn_orders_Delete_AllOrder_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item_row in this.dgv_Orders_All.SelectedRows)
@@ -574,7 +577,7 @@ namespace ShopApp
             }
         }
 
-        //
+        //Searching orders by ID
         private void btn_Orders_SearchById_Click(object sender, EventArgs e)
         {
             List<Order> orders = new List<Order>();            

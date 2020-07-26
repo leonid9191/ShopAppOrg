@@ -31,6 +31,7 @@ namespace ShopApp
 
 
         #region Protected Methods
+        //Open DB
         protected void Connect()
         {
             if (_conn.State != ConnectionState.Open)
@@ -45,7 +46,7 @@ namespace ShopApp
                 }
             }
         }
-
+        //Close connection
         protected void Disconnect()
         {
             _conn.Close();

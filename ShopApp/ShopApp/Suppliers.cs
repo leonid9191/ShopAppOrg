@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Pikiner Artem
+//Chernobylskiy Leonid
 namespace ShopApp
 {
     public class Suppliers
@@ -17,7 +18,7 @@ namespace ShopApp
             
         }
 
-  
+        //Getters and  setters for parametrs
         public string GetSetNameCompany
         {
             get

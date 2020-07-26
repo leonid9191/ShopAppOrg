@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Pikiner Artem
+//Chernobylskiy Leonid
 namespace ShopApp
 {
     public class Item
@@ -13,11 +14,13 @@ namespace ShopApp
         private float price;
         private string nameOfCompany;
 
+
         public Item()
         {
             this.id_item = -1;
         }
 
+        //Getters and  setters for parametrs
         public int GetSetId
         {
             get

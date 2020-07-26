@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Pikiner Artem
+//Chernobylskiy Leonid
 namespace ShopApp
 {
     public class Order
@@ -16,7 +18,7 @@ namespace ShopApp
         {
             this.id_order = -1;
         }
-
+        //Getters and  setters for parametrs
         public int GetSetIdOrder
         {
             get

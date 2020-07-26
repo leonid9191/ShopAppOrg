@@ -57,6 +57,7 @@ namespace ShopApp
             this.label16 = new System.Windows.Forms.Label();
             this.dgv_Items = new System.Windows.Forms.DataGridView();
             this.Clients = new System.Windows.Forms.TabPage();
+            this.btn_clients_createPDF = new System.Windows.Forms.Button();
             this.btn_Clients_order = new System.Windows.Forms.Button();
             this.Clients_tab = new System.Windows.Forms.TabControl();
             this.Client_Change = new System.Windows.Forms.TabPage();
@@ -114,7 +115,6 @@ namespace ShopApp
             this.btn_Orders_Add_Delete = new System.Windows.Forms.Button();
             this.dgv_orders_addNewOrder = new System.Windows.Forms.DataGridView();
             this.btn_Orders__Add_Save = new System.Windows.Forms.Button();
-            this.btn_clients_createPDF = new System.Windows.Forms.Button();
             this.tabDataBase.SuspendLayout();
             this.addStudent.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -442,6 +442,16 @@ namespace ShopApp
             this.Clients.TabIndex = 1;
             this.Clients.Text = "Clients";
             this.Clients.UseVisualStyleBackColor = true;
+            // 
+            // btn_clients_createPDF
+            // 
+            this.btn_clients_createPDF.Location = new System.Drawing.Point(467, 156);
+            this.btn_clients_createPDF.Name = "btn_clients_createPDF";
+            this.btn_clients_createPDF.Size = new System.Drawing.Size(106, 150);
+            this.btn_clients_createPDF.TabIndex = 6;
+            this.btn_clients_createPDF.Text = "Create PDF with clients";
+            this.btn_clients_createPDF.UseVisualStyleBackColor = true;
+            this.btn_clients_createPDF.Click += new System.EventHandler(this.btn_clients_createPDF_Click);
             // 
             // btn_Clients_order
             // 
@@ -934,6 +944,7 @@ namespace ShopApp
             this.dgvSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSuppliers.Location = new System.Drawing.Point(-4, 0);
             this.dgvSuppliers.Name = "dgvSuppliers";
+            this.dgvSuppliers.ReadOnly = true;
             this.dgvSuppliers.Size = new System.Drawing.Size(581, 306);
             this.dgvSuppliers.TabIndex = 1;
             this.dgvSuppliers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
@@ -1091,6 +1102,7 @@ namespace ShopApp
             this.dgv_orders_addNewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_orders_addNewOrder.Location = new System.Drawing.Point(-1, 0);
             this.dgv_orders_addNewOrder.Name = "dgv_orders_addNewOrder";
+            this.dgv_orders_addNewOrder.ReadOnly = true;
             this.dgv_orders_addNewOrder.Size = new System.Drawing.Size(307, 281);
             this.dgv_orders_addNewOrder.TabIndex = 15;
             // 
@@ -1106,16 +1118,6 @@ namespace ShopApp
             this.btn_Orders__Add_Save.Text = "Save order";
             this.btn_Orders__Add_Save.UseVisualStyleBackColor = true;
             this.btn_Orders__Add_Save.Click += new System.EventHandler(this.btn_Orders__Add_Save_Click);
-            // 
-            // btn_clients_createPDF
-            // 
-            this.btn_clients_createPDF.Location = new System.Drawing.Point(467, 156);
-            this.btn_clients_createPDF.Name = "btn_clients_createPDF";
-            this.btn_clients_createPDF.Size = new System.Drawing.Size(106, 150);
-            this.btn_clients_createPDF.TabIndex = 6;
-            this.btn_clients_createPDF.Text = "Create PDF with clients";
-            this.btn_clients_createPDF.UseVisualStyleBackColor = true;
-            this.btn_clients_createPDF.Click += new System.EventHandler(this.btn_clients_createPDF_Click);
             // 
             // shop
             // 
@@ -1161,12 +1163,12 @@ namespace ShopApp
 
         private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void Client_Add_Click(object sender, EventArgs e)
@@ -1181,7 +1183,7 @@ namespace ShopApp
 
         private void dgv_Items_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            throw new NotImplementedException();
+            // new NotImplementedException();
         }
 
         #endregion
@@ -1189,7 +1191,6 @@ namespace ShopApp
         private System.Windows.Forms.TabControl tabDataBase;
         private System.Windows.Forms.TabPage addStudent;
         private System.Windows.Forms.TabPage Clients;
-        private ShopApp.dbShopDataSet dbShopDataSet;
         private System.Windows.Forms.TabPage suppliers;
         private System.Windows.Forms.DataGridView dgvClients;
         private System.Windows.Forms.DataGridView dgvSuppliers;
