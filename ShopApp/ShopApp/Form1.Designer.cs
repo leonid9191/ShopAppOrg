@@ -115,6 +115,8 @@ namespace ShopApp
             this.btn_Orders_Add_Delete = new System.Windows.Forms.Button();
             this.dgv_orders_addNewOrder = new System.Windows.Forms.DataGridView();
             this.btn_Orders__Add_Save = new System.Windows.Forms.Button();
+            this.lbl_Orders_sum = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabDataBase.SuspendLayout();
             this.addStudent.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -438,7 +440,7 @@ namespace ShopApp
             this.Clients.Location = new System.Drawing.Point(4, 22);
             this.Clients.Name = "Clients";
             this.Clients.Padding = new System.Windows.Forms.Padding(3);
-            this.Clients.Size = new System.Drawing.Size(573, 563);
+            this.Clients.Size = new System.Drawing.Size(573, 591);
             this.Clients.TabIndex = 1;
             this.Clients.Text = "Clients";
             this.Clients.UseVisualStyleBackColor = true;
@@ -756,7 +758,7 @@ namespace ShopApp
             this.suppliers.Location = new System.Drawing.Point(4, 22);
             this.suppliers.Name = "suppliers";
             this.suppliers.Padding = new System.Windows.Forms.Padding(3);
-            this.suppliers.Size = new System.Drawing.Size(573, 563);
+            this.suppliers.Size = new System.Drawing.Size(573, 591);
             this.suppliers.TabIndex = 2;
             this.suppliers.Text = "Suppliers";
             this.suppliers.UseVisualStyleBackColor = true;
@@ -1087,9 +1089,9 @@ namespace ShopApp
             this.btn_Orders_Add_Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Orders_Add_Delete.Location = new System.Drawing.Point(356, 24);
+            this.btn_Orders_Add_Delete.Location = new System.Drawing.Point(356, 43);
             this.btn_Orders_Add_Delete.Name = "btn_Orders_Add_Delete";
-            this.btn_Orders_Add_Delete.Size = new System.Drawing.Size(145, 84);
+            this.btn_Orders_Add_Delete.Size = new System.Drawing.Size(145, 108);
             this.btn_Orders_Add_Delete.TabIndex = 16;
             this.btn_Orders_Add_Delete.Text = "Delete item";
             this.btn_Orders_Add_Delete.UseVisualStyleBackColor = true;
@@ -1111,13 +1113,31 @@ namespace ShopApp
             this.btn_Orders__Add_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Orders__Add_Save.Location = new System.Drawing.Point(356, 170);
+            this.btn_Orders__Add_Save.Location = new System.Drawing.Point(356, 157);
             this.btn_Orders__Add_Save.Name = "btn_Orders__Add_Save";
-            this.btn_Orders__Add_Save.Size = new System.Drawing.Size(145, 84);
+            this.btn_Orders__Add_Save.Size = new System.Drawing.Size(145, 108);
             this.btn_Orders__Add_Save.TabIndex = 14;
             this.btn_Orders__Add_Save.Text = "Save order";
             this.btn_Orders__Add_Save.UseVisualStyleBackColor = true;
             this.btn_Orders__Add_Save.Click += new System.EventHandler(this.btn_Orders__Add_Save_Click);
+            // 
+            // lbl_Orders_sum
+            // 
+            this.lbl_Orders_sum.AutoSize = true;
+            this.lbl_Orders_sum.Location = new System.Drawing.Point(80, 604);
+            this.lbl_Orders_sum.Name = "lbl_Orders_sum";
+            this.lbl_Orders_sum.Size = new System.Drawing.Size(13, 13);
+            this.lbl_Orders_sum.TabIndex = 19;
+            this.lbl_Orders_sum.Text = "0";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(21, 604);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(53, 13);
+            this.label20.TabIndex = 20;
+            this.label20.Text = "Summary:";
             // 
             // shop
             // 
@@ -1125,6 +1145,8 @@ namespace ShopApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(605, 629);
             this.Controls.Add(this.tabDataBase);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.lbl_Orders_sum);
             this.Name = "shop";
             this.Text = "Shop";
             this.Load += new System.EventHandler(this.shop_Load);
@@ -1158,6 +1180,7 @@ namespace ShopApp
             this.Order_Add.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_orders_addNewOrder)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1272,6 +1295,8 @@ namespace ShopApp
         private TextBox txtBox_Orders_Search;
         private Label label19;
         private Button btn_clients_createPDF;
+        private Label lbl_Orders_sum;
+        private Label label20;
     }
 
     internal class dbShopDataSetTableAdapters

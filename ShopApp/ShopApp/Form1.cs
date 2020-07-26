@@ -16,7 +16,7 @@ namespace ShopApp
     {
         private DBSQL dataB;
         private int id_item;
-        private int id_client;
+        private int id_client = 0;
         private List<Item> items_list;
         private float sumOrder;
         int i = 0;
@@ -163,6 +163,7 @@ namespace ShopApp
             }
         }
 
+
         private void textBox_Clients_IdAdd_TextChanged(object sender, EventArgs e)
         {
 
@@ -182,6 +183,7 @@ namespace ShopApp
                 person.GetSetAddress = textBox_Clients_AdressChange.Text;
                 dataB.UpdateClient(person);
                 ShowClientsDgv();
+                id_client = 0;
                 MessageBox.Show("DataBase changed:\nName: " + person.GetSetName.ToString() + "\nAddress: " + person.GetSetAddress.ToString()
                     + "\nTelephone: " + person.GetSetTel.ToString() + "\n");
             }
@@ -200,7 +202,6 @@ namespace ShopApp
             Item[] items_array = items_list.ToArray();
             dgv_orders_addNewOrder.ColumnCount = 4; //number of Columns
             dgv_orders_addNewOrder.RowCount = items_array.Length;//number of Rows
-
             dgv_orders_addNewOrder.Columns[0].HeaderText = "№";
             dgv_orders_addNewOrder.Columns[1].HeaderText = "Name of Item";
             dgv_orders_addNewOrder.Columns[2].HeaderText = "Price";
@@ -218,13 +219,11 @@ namespace ShopApp
         //Show all orders in one tabel
         private void ShowOrdersAllDgv()
         {
-
             dgv_Orders_All.ClearSelection();
             dgv_Orders_All.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             Order[] orders = dataB.GetOrdersData();//array of suppliers from db
             dgv_Orders_All.ColumnCount = 3; //number of Columns
             dgv_Orders_All.RowCount = orders.Length;//number of Rows
-
             dgv_Orders_All.Columns[0].HeaderText = "Order №";
             dgv_Orders_All.Columns[1].HeaderText = "ID Client";
             dgv_Orders_All.Columns[2].HeaderText = "ID Item";
@@ -494,18 +493,23 @@ namespace ShopApp
         //add to arraay list name of item which was added to cart
         private void btn_Items_addToCart_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item_row in this.dgv_Items.SelectedRows)
+            if (id_client == 0)
+                MessageBox.Show("Please, choose which client shopping this item");
+            else
             {
-                Item item_selected = new Item();
-                item_selected.GetSetId = int.Parse(item_row.Cells[0].Value.ToString());
-                item_selected.GetSetItem = item_row.Cells[1].Value.ToString();
-                item_selected.GetSetPrice = float.Parse(item_row.Cells[2].Value.ToString());
-                item_selected.GetSetSupplier = item_row.Cells[0].Value.ToString();
-                items_list.Add(item_selected);
-                sumOrder += item_selected.GetSetPrice;
+                foreach (DataGridViewRow item_row in this.dgv_Items.SelectedRows)
+                {
+                    Item item_selected = new Item();
+                    item_selected.GetSetId = int.Parse(item_row.Cells[0].Value.ToString());
+                    item_selected.GetSetItem = item_row.Cells[1].Value.ToString();
+                    item_selected.GetSetPrice = float.Parse(item_row.Cells[2].Value.ToString());
+                    item_selected.GetSetSupplier = item_row.Cells[0].Value.ToString();
+                    items_list.Add(item_selected);
+                    sumOrder += item_selected.GetSetPrice;
+                }
+                lbl_Orders_sum.Text = sumOrder.ToString();
+                ShowOrderDgv();
             }
-            lbl_Orders_Summary.Text = sumOrder.ToString();
-            ShowOrderDgv();
         }
 
         //button delete items in cart 
